@@ -214,16 +214,16 @@ document.querySelectorAll('.tab').forEach(button => {
 
 const gallery=document.querySelector('#gallery');
 const photos=[
-  ['images/kajazoma-terrasse-piscine.webp','Terrasse et piscine'],
-  ['images/kajazoma-entree.webp','Entrée du restaurant'],
-  ['images/kajazoma-plat-brochettes.webp','Plat signature'],
-  ['images/kajazoma-filet-boeuf.webp','Filet de bœuf'],
-  ['images/kajazoma-dessert.webp','Dessert'],
-  ['images/kajazoma-salle.webp','Salle intérieure'],
-  ['images/kajazoma-piscine-nuit.webp','Piscine de nuit'],
-  ['images/kajazoma-paillote.webp','Paillote'],
-  ['images/kajazoma-patio.webp','Patio'],
-  ['images/kajazoma-salon.webp','Salon']
+  ['images/kajazoma-terrasse-piscine.webp','Terrasse et piscine du Kajazoma à Abidjan'],
+  ['images/kajazoma-entree.webp','Entrée du restaurant Kajazoma à Deux-Plateaux'],
+  ['images/kajazoma-plat-brochettes.webp','Brochettes servies au restaurant Kajazoma'],
+  ['images/kajazoma-filet-boeuf.webp','Filet de bœuf servi au Kajazoma'],
+  ['images/kajazoma-dessert.webp','Dessert servi au restaurant Kajazoma'],
+  ['images/kajazoma-salle.webp','Salle intérieure du Kajazoma à Abidjan'],
+  ['images/kajazoma-piscine-nuit.webp','Piscine du Kajazoma en soirée'],
+  ['images/kajazoma-paillote.webp','Paillote et espace extérieur du Kajazoma'],
+  ['images/kajazoma-patio.webp','Patio du restaurant Kajazoma'],
+  ['images/kajazoma-salon.webp','Salon du Kajazoma à Abidjan']
 ];
 gallery.innerHTML=photos.map((p,i)=>`<button type="button" aria-label="Ouvrir la photo ${i+1}" data-src="${p[0]}"><img loading="lazy" src="${p[0]}" alt="${p[1]}"></button>`).join('');
 
