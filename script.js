@@ -82,7 +82,7 @@ const menu = [
 
   // Vins rouges
   ['Antoine Sanzay la paterne','vin-rouge','29 000 FCFA',''],
-  [\"Barbera d'Asti Superiore DOCG\",'vin-rouge','28 000 FCFA',''],
+  ["Barbera d'Asti Superiore DOCG",'vin-rouge','28 000 FCFA',''],
   ['Château Pontet Barrail','vin-rouge','28 000 FCFA','Médoc'],
   ['Château cheval noir','vin-rouge','22 000 FCFA',''],
   ['G. Meffre Laurus','vin-rouge','32 000 FCFA','Croze Hermitage'],
@@ -99,7 +99,7 @@ const menu = [
 
   // Vins rosés
   ['Abbazia Moscato rosé','vin-rose','22 000 FCFA','Pétillant & sucré'],
-  ['Bleu de mer','vin-rose','22 000 FCFA',\"Pays d'OC\"],
+  ['Bleu de mer','vin-rose','22 000 FCFA',"Pays d'OC"],
   ['Whispering angel','vin-rose','35 000 FCFA',''],
 
   // Tisanes & cafés
