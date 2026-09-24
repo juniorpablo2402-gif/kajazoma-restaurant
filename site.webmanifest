@@ -1,1 +1,14 @@
-{"name":"Kajazoma","short_name":"Kajazoma","start_url":"./","display":"standalone","background_color":"#10140f","theme_color":"#10140f","lang":"fr"}
+{
+  "name":"Kajazoma — Restaurant à Abidjan",
+  "short_name":"Kajazoma",
+  "description":"Restaurant-galerie à Deux-Plateaux, Cocody, Abidjan.",
+  "start_url":"/",
+  "scope":"/",
+  "display":"standalone",
+  "background_color":"#0d120e",
+  "theme_color":"#0d120e",
+  "lang":"fr-CI",
+  "icons":[
+    {"src":"/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
