@@ -238,3 +238,48 @@ const hamburger=document.querySelector('.hamburger'),nav=document.querySelector(
 hamburger?.addEventListener('click',()=>{const open=nav.classList.toggle('open');hamburger.setAttribute('aria-expanded',open)});
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+
+// ─── GA4 engagement tracking ────────────────────────────────────────────────
+const track = (name, params = {}) => {
+  if (typeof window.kajazomaTrack === 'function') window.kajazomaTrack(name, params);
+};
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a');
+  if (!link) return;
+
+  const href = link.getAttribute('href') || '';
+  let placement = 'other';
+
+  if (link.closest('.hero')) placement = 'hero';
+  else if (link.closest('#menu')) placement = 'menu';
+  else if (link.closest('.reserve-cta')) placement = 'reservation_cta';
+  else if (link.closest('#contact')) placement = 'contact';
+  else if (link.closest('.footer')) placement = 'footer';
+  else if (link.closest('.header')) placement = 'header';
+
+  if (href.includes('wa.me')) {
+    track('whatsapp_click', { placement });
+  } else if (href.startsWith('tel:')) {
+    track('phone_click', { placement });
+  } else if (href.includes('reservation.html')) {
+    track('reservation_start', { placement });
+  } else if (href.includes('maps.app.goo.gl')) {
+    track('directions_click', { placement });
+  }
+});
+
+const menuSection = document.querySelector('#menu');
+if (menuSection && 'IntersectionObserver' in window) {
+  let menuTracked = false;
+  const menuObserver = new IntersectionObserver((entries) => {
+    if (menuTracked) return;
+    if (entries.some(entry => entry.isIntersecting)) {
+      menuTracked = true;
+      track('menu_view', { section: 'menu' });
+      menuObserver.disconnect();
+    }
+  }, { threshold: 0.2 });
+  menuObserver.observe(menuSection);
+}
