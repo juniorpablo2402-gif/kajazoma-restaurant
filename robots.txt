@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kajazoma.ci/sitemap.xml

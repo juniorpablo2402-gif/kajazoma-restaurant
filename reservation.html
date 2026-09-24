@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réserver une table — Kajazoma Abidjan</title>
+<meta name="description" content="Demandez une réservation au Kajazoma, 34 Rue Appéla Yao, Deux-Plateaux, Cocody, Abidjan.">
+<link rel="stylesheet" href="styles.css"></head>
+<body class="reservation-page">
+<header class="header"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Kajazoma</span></a><a class="btn btn-outline" href="index.html">← Retour au site</a></header>
+<main class="booking-main">
+  <div class="booking-intro"><span class="eyebrow">Réservation</span><h1>Votre table au Kajazoma.</h1><p>Choisissez une date et une heure. Votre demande est préparée dans WhatsApp afin que l'équipe puisse confirmer la disponibilité.</p></div>
+  <form id="bookingForm" class="booking-card">
+    <div class="progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
+    <div class="form-grid">
+      <label>Nom complet<input name="name" required autocomplete="name" placeholder="Votre nom"></label>
+      <label>Téléphone<input name="phone" required autocomplete="tel" inputmode="tel" placeholder="+225 …"></label>
+      <label>Date<input id="date" name="date" type="date" required></label>
+      <label>Heure<select name="time" required><option value="">Choisir</option><option>11:30</option><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option><option>14:00</option><option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option></select></label>
+      <label>Nombre de personnes<select name="guests" required><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></label>
+      <label>Occasion<select name="occasion"><option>Repas</option><option>Anniversaire</option><option>Dîner romantique</option><option>Déjeuner d'affaires</option><option>Événement / groupe</option></select></label>
+      <label class="full">Message<textarea name="message" rows="5" placeholder="Préférence de table, allergie, demande particulière…"></textarea></label>
+    </div>
+    <button class="btn btn-gold" type="submit">Envoyer la demande sur WhatsApp</button>
+    <p class="fine">Votre demande n'est pas une confirmation automatique : la table est confirmée après réponse du restaurant.</p>
+  </form>
+</main>
+<footer class="footer"><div><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Kajazoma</span></a></div><small>© <span id="year"></span> Kajazoma</small></footer>
+<script>
+const d=document.querySelector('#date'); const now=new Date(); d.min=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
+document.querySelector('#bookingForm').addEventListener('submit', e=>{
+  e.preventDefault(); const f=new FormData(e.currentTarget);
+  const msg=[
+    'Bonjour Kajazoma, je souhaite demander une réservation.',
+    'Nom : '+f.get('name'),'Téléphone : '+f.get('phone'),'Date : '+f.get('date'),
+    'Heure : '+f.get('time'),'Personnes : '+f.get('guests'),'Occasion : '+f.get('occasion'),
+    'Message : '+(f.get('message')||'Aucun')
+  ].join('\n');
+  window.open('https://wa.me/2250705106717?text='+encodeURIComponent(msg),'_blank','noopener');
+});
+document.querySelector('#year').textContent=new Date().getFullYear();
+</script></body></html>

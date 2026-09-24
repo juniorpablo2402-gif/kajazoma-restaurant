@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kajazoma — Restaurant & Galerie à Abidjan | Deux-Plateaux</title>
+  <meta name="description" content="Kajazoma, restaurant-galerie à Deux-Plateaux, Cocody, Abidjan. Cuisine aux influences africaines et internationales, cocktails, art et réservations.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10140f">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="Kajazoma — Restaurant & Galerie à Abidjan">
+  <meta property="og:description" content="Cuisine, cocktails, art et ambiance au Kajazoma, Deux-Plateaux, Cocody.">
+  <meta property="og:image" content="images/kajazoma-terrasse-piscine.webp">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%2310140f%22 stroke=%22%23d7aa52%22 stroke-width=%225%22/><text x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22%23d7aa52%22 font-family=%22serif%22>K</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Restaurant",
+    "name":"Kajazoma",
+    "description":"Restaurant-galerie à Deux-Plateaux, Cocody, Abidjan, mêlant cuisine et art.",
+    "telephone":"+2250705106717",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"34 Rue Appéla Yao",
+      "addressLocality":"Abidjan",
+      "addressRegion":"Cocody",
+      "addressCountry":"CI"
+    },
+    "servesCuisine":["Africaine","Camerounaise","Ivoirienne","Européenne","Fusion"],
+    "priceRange":"10000-40000 XOF",
+    "sameAs":[
+      "https://www.instagram.com/Kajazoma_Concept",
+      "https://www.facebook.com/Kajazoma_Concept",
+      "https://linktr.ee/KAJAZOMA"
+    ],
+    "openingHoursSpecification":[
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Saturday","Sunday"],"opens":"11:00","closes":"15:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Saturday","Sunday"],"opens":"18:00","closes":"22:30"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"11:00","closes":"15:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"18:00","closes":"23:30"}
+    ]
+  }
+  </script>
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="#accueil"><span class="brand-mark">K</span><span>Kajazoma</span></a>
+  <button class="hamburger" aria-expanded="false" aria-controls="nav">☰</button>
+  <nav id="nav" class="nav">
+    <a href="#accueil">Accueil</a><a href="#restaurant">Le lieu</a><a href="#menu">Menu</a>
+    <a href="#galerie">Galerie</a><a href="reservation.html">Réserver</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="btn btn-gold desktop-cta" href="reservation.html">Réserver une table</a>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div class="hero-media"></div><div class="shade"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Deux-Plateaux · Cocody · Abidjan</p>
+    <h1>L'art de recevoir,<br><em>à la Kajazoma.</em></h1>
+    <p>Un restaurant-galerie où cuisine, cocktails, objets d'art et jardin se rencontrent.</p>
+    <div class="actions"><a class="btn btn-gold" href="#menu">Voir le menu</a><a class="btn btn-outline" href="reservation.html">Réserver</a></div>
+  </div>
+  <div class="hero-badge">Cuisine · Art · Cocktails</div>
+</section>
+
+<section class="section cream" id="restaurant">
+  <div class="split">
+    <div><span class="eyebrow dark">L'expérience Kajazoma</span><h2>Un lieu pour manger,<br>boire et découvrir.</h2></div>
+    <div><p class="lead">Kajazoma est présenté en ligne comme un lieu qui fusionne restaurant, galerie d'art et expérience culinaire au cœur de Cocody.</p><p>La carte mêle influences africaines et internationales, tandis que le cadre fait une large place au jardin, aux objets d'art et aux espaces extérieurs.</p><a class="text-link" href="#galerie">Explorer la galerie →</a></div>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="section-head"><div><span class="eyebrow">La carte</span><h2>Menu Kajazoma</h2></div><div class="price-note"><strong>10 000–40 000 FCFA</strong><span>fourchette de budget publiée en ligne</span></div></div>
+  <div class="notice">Les prix détaillés par plat ne sont pas tous publiés de façon vérifiable dans les sources actuelles. Les montants ci-dessous sont affichés uniquement lorsqu'ils sont publiés et vérifiables ; sinon, le prix est indiqué « sur demande ».</div>
+  <div class="tabs">
+    <button class="tab active" data-cat="all">Tout</button><button class="tab" data-cat="plats">Plats</button>
+    <button class="tab" data-cat="accomp">Accompagnements</button><button class="tab" data-cat="desserts">Desserts</button>
+    <button class="tab" data-cat="boissons">Boissons</button><button class="tab" data-cat="cocktails">Cocktails</button>
+  </div>
+  <div id="menuGrid" class="menu-grid"></div>
+</section>
+
+<section class="section feature">
+  <div class="feature-image" role="img" aria-label="Terrasse et jardin de Kajazoma"></div>
+  <div class="feature-copy"><span class="eyebrow">Le cadre</span><h2>Une adresse pensée comme une galerie.</h2><p>Les sources publiques décrivent un décor mêlant jardin, terrasse, piscine et objets d'art, avec une identité de restaurant-concept-store.</p><a class="btn btn-gold" href="#galerie">Voir les photos</a></div>
+</section>
+
+<section class="section" id="galerie">
+  <div class="section-head"><div><span class="eyebrow">Images</span><h2>Galerie</h2></div><p class="muted">Photos réelles issues des contenus fournis et de sources publiques du restaurant.</p></div>
+  <div id="gallery" class="gallery"></div>
+</section>
+
+<section class="section hours cream">
+  <div class="split"><div><span class="eyebrow dark">Horaires</span><h2>Quand venir ?</h2><p class="muted-dark">Horaires publiés sur la fiche menu actuelle ; à confirmer les jours fériés.</p></div>
+  <div class="hours-grid">
+    <div><b>Lundi</b><span>11:00–15:00 · 18:00–22:30</span></div><div><b>Mardi</b><span>11:00–15:00 · 18:00–22:30</span></div>
+    <div><b>Mercredi</b><span>11:00–15:00 · 18:00–22:30</span></div><div><b>Jeudi</b><span>11:00–15:00 · 18:00–22:30</span></div>
+    <div><b>Vendredi</b><span>11:00–15:00 · 18:00–23:30</span></div><div><b>Samedi</b><span>11:00–15:00 · 18:00–22:30</span></div>
+    <div><b>Dimanche</b><span>11:00–15:00 · 18:00–22:30</span></div>
+  </div></div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="contact-card"><div><span class="eyebrow">Contact</span><h2>Kajazoma</h2><p>34 Rue Appéla Yao · Deux-Plateaux · Cocody · Abidjan</p><p><a href="tel:+2250705106717">+225 07 05 10 67 17</a></p>
+  <div class="actions"><a class="btn btn-gold" href="reservation.html">Réserver</a><a class="btn btn-outline" href="https://wa.me/2250705106717" target="_blank" rel="noopener">WhatsApp</a></div></div>
+  <div class="map-box"><span class="map-k">K</span><strong>Deux-Plateaux</strong><span>Cocody · Abidjan</span><a href="https://maps.app.goo.gl/zAnHaqBejKpqVTjX7" target="_blank" rel="noopener">Itinéraire →</a></div></div>
+</section>
+</main>
+
+<footer class="footer">
+  <div><a class="brand" href="#accueil"><span class="brand-mark">K</span><span>Kajazoma</span></a><p>Restaurant · Galerie · Cocody · Abidjan</p></div>
+  <div class="social"><a href="https://www.instagram.com/Kajazoma_Concept" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/Kajazoma_Concept" target="_blank" rel="noopener">Facebook</a><a href="https://linktr.ee/KAJAZOMA" target="_blank" rel="noopener">Tous les liens</a></div>
+  <small>© <span id="year"></span> Kajazoma</small>
+</footer>
+<div id="lightbox" class="lightbox"><button>×</button><img alt=""></div>
+<script src="script.js"></script>
+</body></html>
