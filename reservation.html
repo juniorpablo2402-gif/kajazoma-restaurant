@@ -7,7 +7,7 @@
 <header class="header"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Kajazoma</span></a><a class="btn btn-outline" href="index.html">← Retour au site</a></header>
 <main class="booking-main">
   <div class="booking-intro"><span class="eyebrow">Réservation</span><h1>Votre table au Kajazoma.</h1><p>Choisissez une date et une heure. Votre demande est préparée dans WhatsApp afin que l'équipe puisse confirmer la disponibilité.</p></div>
-  <form id="bookingForm" class="booking-card">
+  <form id="bookingForm" class="booking-card" novalidate>
     <div class="progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
     <div class="form-grid">
       <label>Nom complet<input name="name" required autocomplete="name" placeholder="Votre nom"></label>
@@ -26,7 +26,7 @@
 <script>
 const d=document.querySelector('#date'); const now=new Date(); d.min=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
 document.querySelector('#bookingForm').addEventListener('submit', e=>{
-  e.preventDefault(); const f=new FormData(e.currentTarget);
+  e.preventDefault(); const form=e.currentTarget; if(!form.reportValidity()) return; const f=new FormData(form);
   const msg=[
     'Bonjour Kajazoma, je souhaite demander une réservation.',
     'Nom : '+f.get('name'),'Téléphone : '+f.get('phone'),'Date : '+f.get('date'),
