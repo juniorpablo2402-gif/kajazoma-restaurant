@@ -80,6 +80,54 @@ const menu = [
   ['Guinness','bieres','4 000 FCFA',''],
   ['Heineken','bieres','3 000 FCFA',''],
 
+  // Vins rouges
+  ['Antoine Sanzay la paterne','vin-rouge','29 000 FCFA',''],
+  [\"Barbera d'Asti Superiore DOCG\",'vin-rouge','28 000 FCFA',''],
+  ['Château Pontet Barrail','vin-rouge','28 000 FCFA','Médoc'],
+  ['Château cheval noir','vin-rouge','22 000 FCFA',''],
+  ['G. Meffre Laurus','vin-rouge','32 000 FCFA','Croze Hermitage'],
+  ['J. Moreau & fils Pinot Noir','vin-rouge','30 000 FCFA',''],
+  ['Pascal Jolivet','vin-rouge','29 000 FCFA','Attitude pinot noir'],
+
+  // Vins blancs
+  ['Chardonnay Ardèche','vin-blanc','22 000 FCFA',''],
+  ['Gustave Lorentz','vin-blanc','30 000 FCFA','Riesling'],
+  ['Gustave Lorentz','vin-blanc','28 000 FCFA','Pinot blanc'],
+  ['Haut Reys','vin-blanc','26 000 FCFA','Grave'],
+  ['J. Moreau & fils','vin-blanc','26 000 FCFA','Bourgogne Aligoté'],
+  ['Pascal Jolivet','vin-blanc','26 000 FCFA','Attitude Sauvignon'],
+
+  // Vins rosés
+  ['Abbazia Moscato rosé','vin-rose','22 000 FCFA','Pétillant & sucré'],
+  ['Bleu de mer','vin-rose','22 000 FCFA',\"Pays d'OC\"],
+  ['Whispering angel','vin-rose','35 000 FCFA',''],
+
+  // Tisanes & cafés
+  ['Citronnelle du jardin','tisanes','1 500 FCFA',''],
+  ['Décaféiné','tisanes','2 500 FCFA',''],
+  ['Ristretto','tisanes','2 500 FCFA',''],
+  ['Tisane Mùn Fraîcheur','tisanes','2 500 FCFA','Menthe poivrée, verveine, queues de cerises'],
+  ['Tisane Mùn acidulée','tisanes','2 500 FCFA','Agrumes, citronnelle, bissap blanc'],
+  ['Tisane Mùn gourmande','tisanes','2 500 FCFA','Rose, verveine, vétiver, citronnelle'],
+
+  // Sodas
+  ['Coca-cola','sodas','2 000 FCFA',''],
+  ['Redbull','sodas','4 000 FCFA',''],
+  ['Schweppes tonic','sodas','2 000 FCFA',''],
+
+  // Liqueurs - alcools (éléments entièrement visibles)
+  ['Ricard','liqueurs','5 000 FCFA','1 Awa – 50cl'],
+  ['Téquila Olmeca blanc','liqueurs','5 000 FCFA',''],
+  ['Téquila Olmeca gold','liqueurs','6 000 FCFA',''],
+  ['Vodka Absolut','liqueurs','5 000 FCFA',''],
+  ['Vodka Belvedere','liqueurs','6 000 FCFA',''],
+  ['Vodka Grey Goose','liqueurs','9 000 FCFA',''],
+  ['Whisky Chivas 12 ans','liqueurs','8 000 FCFA',''],
+  ['Whisky Glenmorangie 12 ans','liqueurs','8 000 FCFA',''],
+  ['Whisky Jack Daniel N°7','liqueurs','6 000 FCFA',''],
+  ['Whisky Johnny Walker black','liqueurs','8 000 FCFA',''],
+  ['Whisky Johnny Walker red','liqueurs','5 000 FCFA',''],
+
   // Champagne & pétillants
   ['Billecart-Salmon','champagne','80 000 FCFA','Brut réserve'],
   ['Billecart-Salmon','champagne','80 000 FCFA','Demi-sec'],
@@ -120,6 +168,12 @@ const categoryLabels = {
   garnitures:'Suppléments · Garnitures',
   desserts:'Desserts',
   bieres:'Bières',
+  'vin-rouge':'Vin rouge',
+  'vin-blanc':'Vin blanc',
+  'vin-rose':'Vin rosé',
+  tisanes:'Tisane & cafés',
+  sodas:'Sodas',
+  liqueurs:'Liqueurs · alcools',
   champagne:'Champagne & pétillants',
   cocktails:'Cocktails',
   'cocktails-chauds':'Cocktails chauds',
@@ -129,7 +183,7 @@ const categoryLabels = {
 const groups = {
   food:['salades','poke','soul','tapas','comfort','pasta','choukoyas','mer','ferme'],
   sides:['sauces','garnitures'],
-  drinks:['bieres','champagne'],
+  drinks:['bieres','vin-rouge','vin-blanc','vin-rose','sodas','liqueurs','champagne','tisanes'],
   cocktails:['cocktails','cocktails-chauds','granites'],
   desserts:['desserts']
 };
