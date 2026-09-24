@@ -15,10 +15,13 @@
 <meta property="og:url" content="https://kajazoma-restaurant.vercel.app/reservation.html">
 <meta property="og:image" content="https://kajazoma-restaurant.vercel.app/images/kajazoma-terrasse-piscine.webp">
 <meta property="og:image:alt" content="Terrasse et piscine du Kajazoma à Abidjan">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Réserver une table — Kajazoma">
 <meta name="twitter:description" content="Demandez votre réservation au Kajazoma à Abidjan.">
 <meta name="twitter:image" content="https://kajazoma-restaurant.vercel.app/images/kajazoma-terrasse-piscine.webp">
+<meta name="twitter:image:alt" content="Terrasse et piscine du Kajazoma à Abidjan">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/site.webmanifest">
 <!-- Google Analytics 4 — Kajazoma -->
@@ -36,16 +39,39 @@
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"ReservationAction",
-  "target":"https://kajazoma-restaurant.vercel.app/reservation.html",
-  "name":"Demander une réservation au Kajazoma",
-  "object":{
-    "@type":"FoodEstablishment",
-    "name":"Kajazoma",
-    "url":"https://kajazoma-restaurant.vercel.app/",
-    "telephone":"+2250705106717",
-    "address":{"@type":"PostalAddress","streetAddress":"34 Rue Appéla Yao","addressLocality":"Abidjan","addressRegion":"Cocody","addressCountry":"CI"}
-  }
+  "@graph":[
+    {
+      "@type":"Restaurant",
+      "@id":"https://kajazoma-restaurant.vercel.app/#restaurant",
+      "name":"Kajazoma",
+      "url":"https://kajazoma-restaurant.vercel.app/",
+      "image":"https://kajazoma-restaurant.vercel.app/images/kajazoma-terrasse-piscine.webp",
+      "telephone":"+2250705106717",
+      "menu":"https://app.chicmenu.io/c/KA04080925",
+      "address":{"@type":"PostalAddress","streetAddress":"34 Rue Appéla Yao","addressLocality":"Abidjan","addressRegion":"Abidjan","addressCountry":"CI"}
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://kajazoma-restaurant.vercel.app/reservation.html#webpage",
+      "url":"https://kajazoma-restaurant.vercel.app/reservation.html",
+      "name":"Réserver une table — Kajazoma | Abidjan, Cocody",
+      "isPartOf":{"@id":"https://kajazoma-restaurant.vercel.app/#website"},
+      "about":{"@id":"https://kajazoma-restaurant.vercel.app/#restaurant"}
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Kajazoma","item":"https://kajazoma-restaurant.vercel.app/"},
+        {"@type":"ListItem","position":2,"name":"Réserver une table"}
+      ]
+    },
+    {
+      "@type":"ReservationAction",
+      "target":{"@type":"EntryPoint","urlTemplate":"https://kajazoma-restaurant.vercel.app/reservation.html"},
+      "name":"Demander une réservation au Kajazoma",
+      "object":{"@id":"https://kajazoma-restaurant.vercel.app/#restaurant"}
+    }
+  ]
 }
 </script>
 </head>
