@@ -2,9 +2,41 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Réserver une table — Kajazoma Abidjan</title>
-<meta name="description" content="Demandez une réservation au Kajazoma, 34 Rue Appéla Yao, Deux-Plateaux, Cocody, Abidjan.">
+<title>Réserver une table — Kajazoma | Abidjan, Cocody</title>
+<meta name="description" content="Demandez une réservation au Kajazoma, restaurant-galerie à Deux-Plateaux, Cocody, Abidjan. Choisissez votre date, heure et nombre de personnes.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d120e">
+<link rel="canonical" href="https://kajazoma-restaurant.vercel.app/reservation.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kajazoma">
+<meta property="og:locale" content="fr_CI">
+<meta property="og:title" content="Réserver une table — Kajazoma">
+<meta property="og:description" content="Demandez votre réservation au Kajazoma, Deux-Plateaux, Cocody, Abidjan.">
+<meta property="og:url" content="https://kajazoma-restaurant.vercel.app/reservation.html">
+<meta property="og:image" content="https://kajazoma-restaurant.vercel.app/images/kajazoma-terrasse-piscine.webp">
+<meta property="og:image:alt" content="Terrasse et piscine du Kajazoma à Abidjan">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Réserver une table — Kajazoma">
+<meta name="twitter:description" content="Demandez votre réservation au Kajazoma à Abidjan.">
+<meta name="twitter:image" content="https://kajazoma-restaurant.vercel.app/images/kajazoma-terrasse-piscine.webp">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ReservationAction",
+  "target":"https://kajazoma-restaurant.vercel.app/reservation.html",
+  "name":"Demander une réservation au Kajazoma",
+  "object":{
+    "@type":"FoodEstablishment",
+    "name":"Kajazoma",
+    "url":"https://kajazoma-restaurant.vercel.app/",
+    "telephone":"+2250705106717",
+    "address":{"@type":"PostalAddress","streetAddress":"34 Rue Appéla Yao","addressLocality":"Abidjan","addressRegion":"Cocody","addressCountry":"CI"}
+  }
+}
+</script>
 </head>
 <body class="reservation-page">
 <header class="booking-header">
@@ -59,6 +91,5 @@ document.querySelector('#bookingForm').addEventListener('submit', e=>{
   ].join('\n');
   window.open('https://wa.me/2250705106717?text='+encodeURIComponent(msg),'_blank','noopener');
 });
-document.querySelector('#year').textContent=new Date().getFullYear();
 </script></body></html>
 
