@@ -21,6 +21,17 @@
 <meta name="twitter:image" content="https://kajazoma-restaurant.vercel.app/images/kajazoma-terrasse-piscine.webp">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/site.webmanifest">
+<!-- Google Analytics 4 — Kajazoma -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SDSTPC1GXL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SDSTPC1GXL');
+  window.kajazomaTrack = function(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  };
+</script>
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {
@@ -89,6 +100,11 @@ document.querySelector('#bookingForm').addEventListener('submit', e=>{
     'Heure : '+f.get('time'),'Personnes : '+f.get('guests'),'Occasion : '+f.get('occasion'),
     'Message : '+(f.get('message')||'Aucun')
   ].join('\n');
+  window.kajazomaTrack('reservation_request', {
+    method: 'whatsapp',
+    guests: String(f.get('guests') || ''),
+    occasion: String(f.get('occasion') || '')
+  });
   window.open('https://wa.me/2250705106717?text='+encodeURIComponent(msg),'_blank','noopener');
 });
 </script></body></html>
