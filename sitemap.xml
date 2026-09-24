@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://kajazoma-restaurant.vercel.app/</loc></url>
-  <url><loc>https://kajazoma-restaurant.vercel.app/reservation.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://kajazoma-restaurant.vercel.app/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-terrasse-piscine.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-entree.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-plat-brochettes.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-filet-boeuf.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-dessert.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-salle.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-piscine-nuit.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-paillote.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-patio.webp</image:loc></image:image>
+    <image:image><image:loc>https://kajazoma-restaurant.vercel.app/images/kajazoma-salon.webp</image:loc></image:image>
+  </url>
+  <url><loc>https://kajazoma-restaurant.vercel.app/reservation.html</loc><lastmod>2026-09-24</lastmod></url>
 </urlset>
