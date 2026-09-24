@@ -37,3 +37,99 @@
 @keyframes scrollPulse{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(4px);opacity:1}}
 @media(max-width:850px){.header{height:68px}.hero{min-height:92svh;padding-top:120px;padding-bottom:80px}.hero-badge{display:none}.hero-scroll{left:5vw;bottom:26px}.hero h1{font-size:clamp(48px,14vw,76px)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-media,.hero-scroll i{animation:none}}
+
+/* V3 — Premium editorial direction */
+:root{
+  --ink:#0d120e;
+  --ink-2:#151b15;
+  --cream:#f4efe5;
+  --gold:#c9a35e;
+  --gold-soft:#e2c27f;
+  --line:rgba(201,163,94,.22);
+}
+body{background:var(--ink);letter-spacing:.005em}
+.header{background:rgba(13,18,14,.58);border-bottom-color:rgba(255,255,255,.06)}
+.header.scrolled{background:rgba(13,18,14,.94)}
+.nav a{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#d8d5cb}
+.desktop-cta{font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.hero{min-height:100svh}
+.hero-media{background-position:center 55%}
+.hero-inner .eyebrow{margin-bottom:20px}
+.hero h1{max-width:900px;font-size:clamp(60px,9.2vw,128px);font-weight:600}
+.hero h1 em{font-style:italic}
+.hero-inner>p:not(.eyebrow){max-width:540px}
+.section{padding:clamp(88px,10vw,150px) 5vw}
+.cream{background:var(--cream)}
+.editorial-head{max-width:1200px;margin:0 auto 70px}
+.editorial-head h2,.table-intro h2{font-size:clamp(44px,6vw,82px);letter-spacing:-.045em}
+.editorial-head h2 em{font-style:italic;color:var(--gold);font-weight:400}
+.editorial-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.35fr .7fr .65fr;gap:28px;align-items:end}
+.editorial-photo{margin:0}
+.editorial-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.photo-large{height:620px}
+.photo-small{height:360px}
+.editorial-photo figcaption{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#777;padding-top:12px}
+.editorial-copy{padding:0 8px 35px}
+.editorial-copy .number,.signature-number{font-size:11px;letter-spacing:.18em;color:var(--gold)}
+.editorial-copy h3{font:500 clamp(40px,4.5vw,66px)/.95 Georgia,serif;margin:18px 0 25px}
+.editorial-copy p{color:#a9ada4;max-width:360px;line-height:1.8}
+.table-intro{padding-bottom:65px}
+.table-intro .section-head{align-items:end}
+.table-intro .muted{max-width:390px;line-height:1.8}
+.signature{display:grid;grid-template-columns:1.35fr .65fr;min-height:720px;padding-top:0;padding-bottom:0;background:#111611}
+.signature-media{min-height:650px;overflow:hidden}
+.signature-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s}
+.signature:hover .signature-media img{transform:scale(1.025)}
+.signature-copy{display:flex;flex-direction:column;justify-content:center;padding:70px 7vw 70px 6vw}
+.signature-copy h2{font-size:clamp(48px,6vw,82px);margin:20px 0}
+.signature-copy p{max-width:360px;color:#a9ada4;line-height:1.8;margin-bottom:28px}
+.night-section{position:relative;min-height:620px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(8,12,9,.96),rgba(8,12,9,.58)),url('images/kajazoma-piscine-nuit.webp') center/cover fixed}
+.night-inner{max-width:720px}
+.night-inner h2{font-size:clamp(52px,7vw,92px);letter-spacing:-.045em}
+.night-inner h2 em{color:var(--gold-soft);font-style:italic;font-weight:400}
+.night-inner>p{max-width:520px;color:#c7c5bc;font-size:18px;line-height:1.8}
+.cocktail-line{display:flex;flex-wrap:wrap;gap:12px;color:#e4dfd3;text-transform:uppercase;letter-spacing:.13em;font-size:11px;margin:32px 0}
+.cocktail-line i{color:var(--gold);font-style:normal}
+.feature{min-height:620px}
+.gallery{grid-template-columns:1.25fr .75fr .75fr;grid-auto-rows:290px;gap:18px}
+.gallery button{border-radius:0}
+.gallery button:first-child{grid-row:span 2}
+.gallery button:nth-child(4){grid-row:span 2}
+.gallery button:nth-child(7){grid-column:span 2}
+.gallery button:nth-child(10){grid-column:span 2}
+.gallery img{filter:saturate(.92)}
+.manifesto{padding:clamp(100px,13vw,190px) 5vw}
+.manifesto-inner{max-width:1050px;margin:auto;text-align:center}
+.manifesto blockquote{font:400 italic clamp(42px,6vw,78px)/1.05 Georgia,serif;margin:35px auto 30px;letter-spacing:-.035em}
+.manifesto-sign{font-size:10px;letter-spacing:.3em;color:#777}
+.reserve-cta{min-height:650px;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;background:url('images/kajazoma-terrasse-piscine.webp') center/cover}
+.reserve-overlay{position:absolute;inset:0;background:rgba(8,12,9,.68)}
+.reserve-inner{position:relative;z-index:2}
+.reserve-inner h2{font-size:clamp(58px,8vw,108px);line-height:.9;letter-spacing:-.05em}
+.reserve-inner h2 em{color:var(--gold-soft);font-style:italic;font-weight:400}
+.reserve-inner p{color:#ddd9ce;font-size:18px;margin:25px 0 30px}
+.reserve-phone{display:block;margin-top:16px;font-size:12px;letter-spacing:.12em;color:#d4d0c5}
+.contact{padding-top:110px}
+@media(max-width:900px){
+  .editorial-grid{grid-template-columns:1fr 1fr}
+  .photo-large{height:500px;grid-row:span 2}
+  .photo-small{height:280px}
+  .editorial-copy{padding:10px 0 20px}
+  .signature{grid-template-columns:1fr}
+  .signature-media{min-height:500px}
+  .signature-copy{padding:70px 5vw}
+  .night-section{background-attachment:scroll}
+  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:240px}
+  .gallery button:nth-child(7),.gallery button:nth-child(10){grid-column:auto}
+}
+@media(max-width:560px){
+  .editorial-grid{display:flex;flex-direction:column;align-items:stretch}
+  .photo-large,.photo-small{height:360px}
+  .editorial-copy{order:3;padding:20px 0}
+  .editorial-head{margin-bottom:45px}
+  .gallery{grid-template-columns:1fr;grid-auto-rows:280px}
+  .gallery button:first-child,.gallery button:nth-child(4){grid-row:auto}
+  .night-section{min-height:600px}
+  .cocktail-line{gap:8px}
+  .reserve-cta{min-height:590px}
+}
