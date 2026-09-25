@@ -235,9 +235,24 @@ gallery.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)re
 modal.addEventListener('click',e=>{if(e.target===modal||e.target.classList.contains('close'))modal.classList.remove('open')});
 
 const hamburger=document.querySelector('.hamburger'),nav=document.querySelector('#nav');
-hamburger?.addEventListener('click',()=>{const open=nav.classList.toggle('open');hamburger.setAttribute('aria-expanded',open)});
-document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const setNavState = (open) => {
+  nav?.classList.toggle('open', open);
+  hamburger?.setAttribute('aria-expanded', String(open));
+  hamburger?.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+};
+hamburger?.addEventListener('click',()=>setNavState(!nav.classList.contains('open')));
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>setNavState(false)));
+document.addEventListener('keydown',event=>{if(event.key==='Escape')setNavState(false)});
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+document.querySelectorAll('.mobile-action-bar a').forEach(action=>{
+  action.addEventListener('click',()=>{
+    const type=action.dataset.mobileAction;
+    if(type==='whatsapp') track('whatsapp_click',{placement:'mobile_action_bar'});
+    if(type==='reservation') track('reservation_start',{placement:'mobile_action_bar'});
+    if(type==='menu') track('menu_view',{section:'menu',placement:'mobile_action_bar'});
+  });
+});
 
 
 // ─── GA4 engagement tracking ────────────────────────────────────────────────
