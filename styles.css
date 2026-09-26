@@ -159,7 +159,6 @@ body{background:var(--ink);letter-spacing:.005em}
 .booking-card label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#353830}
 .booking-card input,.booking-card select,.booking-card textarea{border:0;border-bottom:1px solid #cfc8ba;border-radius:0;padding:13px 2px;background:transparent;transition:border-color .2s,box-shadow .2s}
 .booking-card input:focus,.booking-card select:focus,.booking-card textarea:focus{outline:none;border-color:var(--gold)}
-.booking-card textarea{min-height:105px}
 .booking-submit{width:100%;justify-content:space-between;border-radius:0;padding:16px 18px;text-transform:uppercase;letter-spacing:.1em;font-size:11px}
 .booking-submit span{font-size:17px}
 .booking-footnote{display:flex;justify-content:space-between;gap:20px;margin-top:30px;color:#8b897f;font-size:9px;text-transform:uppercase;letter-spacing:.18em}
@@ -266,3 +265,9 @@ html{scroll-padding-top:84px}
   .hero{min-height:640px}
   .mobile-action-bar{min-height:58px}
 }
+
+/* Mobile tap feedback: remove native blue highlight, keep accessible keyboard focus */
+@media (hover:none) and (pointer:coarse){
+  a,button,input,select,textarea{-webkit-tap-highlight-color:transparent}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
