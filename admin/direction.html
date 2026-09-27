@@ -9,6 +9,44 @@
 :root{--ink:#09100c;--ink2:#142019;--cream:#f5f0e6;--paper:#fffdf8;--gold:#c9a35e;--line:rgba(9,16,12,.1);--muted:#747b73;--red:#9b4d3f;--green:#5e7b5d}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Manrope,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;padding-bottom:90px}.top{height:64px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:5}.brand{color:#fff;text-decoration:none;display:flex;gap:10px;align-items:center;font-size:10px;letter-spacing:.16em;font-weight:700}.mark{width:30px;height:30px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font:17px Georgia}.top-actions{display:flex;gap:8px;align-items:center}.btn{border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;padding:8px 11px;border-radius:999px;font-size:10px}.user{font-size:9px;color:#aeb6ae;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.shell{max-width:1180px;margin:auto;padding:28px 16px}.eyebrow{font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#9d7b3f}h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:5px 0}h1{font-size:48px;line-height:.9}.sub{font-size:11px;color:var(--muted);line-height:1.6;max-width:600px}.hero{margin:20px 0 14px;padding:22px;border-radius:18px;background:linear-gradient(120deg,var(--ink),var(--ink2));color:#fff}.hero-grid{display:grid;grid-template-columns:1.4fr repeat(4,.7fr);gap:10px}.hero h2{font-size:34px}.metric{padding:14px;border:1px solid rgba(201,163,94,.18);border-radius:14px;background:rgba(255,255,255,.035)}.metric b{display:block;font:500 31px "Cormorant Garamond",Georgia,serif}.metric span{font-size:8px;color:#aeb6ae;text-transform:uppercase;letter-spacing:.1em}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px}.panel h2{font-size:26px}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.count{background:#f2e6ca;color:#80642e;border-radius:999px;padding:5px 8px;font-size:9px}.row{padding:12px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:12px}.row:first-of-type{border-top:0}.row strong{font-size:11px}.row small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.pill{display:inline-flex;padding:4px 8px;border-radius:999px;font-size:8px;text-transform:uppercase;border:1px solid}.pending{color:#87692d;background:#faf5e8}.confirmed{color:var(--green);background:#eef4ec}.arrived{color:#4d7770;background:#eaf2ef}.declined,.cancelled,.no_show{color:var(--red);background:#f8eeeb}.completed{color:#59646c;background:#eef1f2}.alert{padding:11px;border-radius:12px;background:#fbefec;border:1px solid rgba(155,77,63,.14);font-size:10px;margin-top:8px}.empty{color:var(--muted);font-size:10px;padding:14px 0}.drawer{position:fixed;inset:0;background:rgba(9,16,12,.48);display:none;z-index:8}.drawer.open{display:block}.card{position:absolute;right:0;top:0;height:100%;width:min(520px,100%);background:var(--cream);padding:20px;overflow:auto}.close{float:right;border:0;background:var(--ink);color:#fff;border-radius:50%;width:36px;height:36px}.field{margin-top:18px}.field label{display:block;font-size:9px;font-weight:700;margin-bottom:6px}.field textarea,.field select{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:11px}.primary{width:100%;margin-top:12px;border:0;background:var(--ink);color:#fff;border-radius:10px;padding:13px}.history{margin-top:18px}.history-item{padding:10px 0;border-top:1px solid var(--line);font-size:9px}.history-item b{font-size:10px}.history-item span{color:var(--muted);display:block;margin-top:3px}.bottom{position:fixed;z-index:7;left:12px;right:12px;bottom:12px;height:58px;background:rgba(9,16,12,.97);border:1px solid rgba(201,163,94,.18);border-radius:18px;display:flex;justify-content:space-around;align-items:center}.nav{border:0;background:transparent;color:#aeb6ae;font-size:9px;padding:7px 14px}.nav.active{color:#fff}.nav span{display:block;font-size:16px;color:var(--gold);margin-bottom:3px}.feedback{padding:11px 13px;border-left:2px solid var(--gold);background:rgba(201,163,94,.08);font-size:10px;margin-bottom:12px}.error{border-left-color:var(--red);background:#fbefec}
 @media(max-width:760px){.hero-grid{grid-template-columns:1fr 1fr}.hero-copy{grid-column:1/-1}.grid{grid-template-columns:1fr}.user{display:none}h1{font-size:41px}}@media(max-width:420px){.shell{padding:22px 12px}.hero{padding:16px}.hero h2{font-size:29px}}
+
+/* KAJAZOMA — UI alignment with validated Service art direction */
+:root{--ink:#09100c;--ink2:#132018;--cream:#f5f0e6;--paper:#fffdf8;--gold:#c9a35e;--line:rgba(9,16,12,.10);--muted:#747b73;--red:#9b4d3f;--green:#5e7b5d;--blue:#4d7770}
+html{background:var(--cream)}body{background:var(--cream);overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}
+.top{height:64px;border-bottom:1px solid rgba(201,163,94,.18);box-shadow:none}
+.mark{border-radius:0}
+.shell{max-width:1180px;padding:22px 16px 36px}
+.eyebrow{font-size:9px;letter-spacing:.22em}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500}
+h1{font-size:44px;line-height:.92;margin:5px 0}
+.sub{font-size:11px;line-height:1.6;margin:10px 0 0}
+.hero{margin:18px 0 14px;border-radius:18px;overflow:hidden;padding:22px;position:relative;background:linear-gradient(120deg,var(--ink),var(--ink2));box-shadow:none}
+.hero:after{content:"";position:absolute;inset:auto -8% -65% 42%;height:180%;background:radial-gradient(circle,rgba(201,163,94,.18),transparent 60%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.35fr) repeat(4,minmax(100px,.65fr));gap:10px}
+.hero-copy{padding:4px 6px}.hero h2{font-size:34px;line-height:.95;color:#fff;margin-top:8px}
+.metric{border:1px solid rgba(201,163,94,.18);background:rgba(255,255,255,.035);border-radius:14px;padding:14px;min-height:112px;display:flex;flex-direction:column;justify-content:space-between}
+.metric b{font:500 32px "Cormorant Garamond",Georgia,serif;color:#fff}.metric span{font-size:8px;color:#aeb6ae;text-transform:uppercase;letter-spacing:.12em}
+.grid{grid-template-columns:minmax(0,1.35fr) minmax(300px,.8fr);gap:14px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(9,16,12,.03)}
+.panel h2{font-size:25px;margin:0}.panel-head{margin-bottom:10px}
+.count{min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#f2e6ca;color:#86652a;display:inline-grid;place-items:center;font-size:10px}
+.row{padding:12px 0;border-top:1px solid var(--line);grid-template-columns:minmax(0,1fr) auto;gap:10px}
+.row:first-of-type{border-top:0}.row strong{font-size:11px}.row small{font-size:9px;color:var(--muted);margin-top:3px}
+.pill{min-height:22px;padding:4px 8px;border-radius:999px;font-size:8px;letter-spacing:.07em}
+.alert{padding:11px;border-radius:12px;background:#f7f1e5;border:1px solid rgba(201,163,94,.15);font-size:10px;margin-top:8px}
+.empty{font-size:10px;color:var(--muted);padding:14px 0}
+.bottom{left:12px;right:12px;bottom:12px;height:58px;background:rgba(9,16,12,.97);border:1px solid rgba(201,163,94,.18);border-radius:18px;box-shadow:0 12px 35px rgba(0,0,0,.22)}
+.nav{font-size:9px;padding:7px 12px;color:#aeb6ae}.nav.active{color:#fff}.nav span{font-size:16px;color:var(--gold);margin-bottom:4px}
+.drawer .card{background:var(--cream);padding:20px;box-shadow:-18px 0 45px rgba(0,0,0,.16)}
+.close{background:rgba(9,16,12,.97);width:36px;height:36px}
+.field textarea,.field select{border:1px solid var(--line);background:var(--paper);border-radius:10px}
+.primary{background:var(--ink);border-radius:10px}
+@media(max-width:760px){
+ .shell{padding:22px 12px 34px}.hero-grid{grid-template-columns:1fr 1fr}.hero-copy{grid-column:1/-1}
+ .hero{padding:16px}.hero h2{font-size:29px}.metric{min-height:92px;padding:11px}.metric b{font-size:27px}
+ .grid{grid-template-columns:1fr}.top{padding:0 13px}.user{display:none}h1{font-size:39px}
+}
+@media(max-width:420px){.panel{padding:14px}.hero{margin-top:14px}.row{grid-template-columns:minmax(0,1fr) auto}.shell{padding-left:12px;padding-right:12px}}
 </style>
 </head>
 <body>
