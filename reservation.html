@@ -36,6 +36,13 @@
   };
 </script>
 <link rel="stylesheet" href="styles.css">
+<style>
+.booking-feedback{margin:0 0 18px;padding:14px 16px;border-left:2px solid #c9a35e;background:rgba(201,163,94,.08);font-size:13px;line-height:1.6;color:#2b302a}
+.booking-feedback[data-type="error"]{border-left-color:#9b4d3f;background:rgba(155,77,63,.08)}
+.booking-feedback[data-type="success"]{border-left-color:#6c8b68;background:rgba(108,139,104,.08)}
+.booking-submit:disabled{opacity:.72;cursor:default}
+@media(max-width:560px){.booking-feedback{font-size:12px}}
+</style>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -116,22 +123,136 @@
     <div class="booking-footnote"><span>KAJAZOMA</span><span>Restaurant · Galerie · Jardin</span></div>
   </section>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const d=document.querySelector('#date'); const now=new Date(); d.min=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
-document.querySelector('#bookingForm').addEventListener('submit', e=>{
-  e.preventDefault(); const form=e.currentTarget; if(!form.reportValidity()) return; const f=new FormData(form);
-  const msg=[
-    'Bonjour Kajazoma, je souhaite demander une réservation.',
-    'Nom : '+f.get('name'),'Téléphone : '+f.get('phone'),'Date : '+f.get('date'),
-    'Heure : '+f.get('time'),'Personnes : '+f.get('guests'),'Occasion : '+f.get('occasion'),
-    'Message : '+(f.get('message')||'Aucun')
-  ].join('\n');
-  window.kajazomaTrack('reservation_request', {
-    method: 'whatsapp',
-    guests: String(f.get('guests') || ''),
-    occasion: String(f.get('occasion') || '')
-  });
-  window.open('https://wa.me/2250705106717?text='+encodeURIComponent(msg),'_blank','noopener');
-});
-</script></body></html>
+(() => {
+  const SUPABASE_URL = 'https://oxvwfojzhcjdjywckkwu.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_MvGe-HERTKQhe7ezSfKwww_gDvoWoTt';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  const form = document.querySelector('#bookingForm');
+  const dateInput = document.querySelector('#date');
+  const submitButton = form.querySelector('.booking-submit');
+  const fine = form.querySelector('.fine');
+  const originalButtonText = submitButton.innerHTML;
 
+  const feedback = document.createElement('div');
+  feedback.className = 'booking-feedback';
+  feedback.setAttribute('role', 'status');
+  feedback.setAttribute('aria-live', 'polite');
+  feedback.hidden = true;
+  form.insertBefore(feedback, submitButton);
+
+  const now = new Date();
+  dateInput.min = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+  const setFeedback = (message, type) => {
+    feedback.textContent = message;
+    feedback.dataset.type = type;
+    feedback.hidden = false;
+  };
+  const clearFeedback = () => {
+    feedback.hidden = true;
+    feedback.textContent = '';
+    feedback.removeAttribute('data-type');
+  };
+  const setLoading = (loading) => {
+    submitButton.disabled = loading;
+    submitButton.setAttribute('aria-busy', String(loading));
+    submitButton.innerHTML = loading ? 'Envoi en cours… <span>·</span>' : originalButtonText;
+  };
+  const normalizePhone = (value) => value.trim().replace(/[\s().-]/g, '');
+  const isValidPhone = (value) => /^\+?[0-9]{8,15}$/.test(normalizePhone(value));
+  const isValidDate = (value) => value && value >= dateInput.min;
+
+  form.querySelector('[name="phone"]').addEventListener('input', clearFeedback);
+  dateInput.addEventListener('change', clearFeedback);
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearFeedback();
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const phone = normalizePhone(String(data.get('phone') || ''));
+    const date = String(data.get('date') || '');
+    const time = String(data.get('time') || '');
+    const guestsValue = String(data.get('guests') || '');
+    const guests = guestsValue === '8+' ? 8 : Number(guestsValue);
+    const occasion = String(data.get('occasion') || 'Repas').trim();
+    const message = String(data.get('message') || '').trim();
+
+    if (name.length < 2) {
+      setFeedback('Veuillez renseigner votre nom complet.', 'error');
+      form.elements.name.focus();
+      return;
+    }
+    if (!isValidPhone(phone)) {
+      setFeedback('Veuillez renseigner un numéro de téléphone valide.', 'error');
+      form.elements.phone.focus();
+      return;
+    }
+    if (!isValidDate(date)) {
+      setFeedback('Veuillez choisir une date valide, à partir d’aujourd’hui.', 'error');
+      dateInput.focus();
+      return;
+    }
+    if (!time || !Number.isInteger(guests) || guests < 1 || guests > 50) {
+      setFeedback('Veuillez vérifier l’heure et le nombre de personnes.', 'error');
+      return;
+    }
+
+    const combinedMessage = [
+      'Occasion : ' + occasion,
+      message ? 'Demande : ' + message : ''
+    ].filter(Boolean).join('\n');
+
+    setLoading(true);
+
+    try {
+      const { data: reservation, error } = await supabaseClient
+        .from('reservations')
+        .insert({
+          customer_name: name,
+          phone,
+          reservation_date: date,
+          reservation_time: time,
+          party_size: guests,
+          message: combinedMessage || null,
+          status: 'pending',
+          source: 'website'
+        })
+        .select('id, status')
+        .single();
+
+      if (error) throw error;
+
+      window.kajazomaTrack('reservation_request', {
+        method: 'supabase',
+        guests: String(guestsValue),
+        occasion
+      });
+
+      form.reset();
+      dateInput.min = new Date().toISOString().slice(0, 10);
+      setFeedback('Votre demande a bien été envoyée. L’équipe Kajazoma va vérifier la disponibilité et vous confirmer la table.', 'success');
+      fine.textContent = 'Demande reçue · Confirmation après vérification de la disponibilité.';
+      submitButton.innerHTML = 'Demande envoyée <span>✓</span>';
+      submitButton.disabled = true;
+      submitButton.removeAttribute('aria-busy');
+      submitButton.dataset.reservationId = reservation.id;
+    } catch (error) {
+      console.error('Kajazoma reservation error:', error);
+      const isNetworkError = !navigator.onLine || error?.message?.toLowerCase().includes('fetch');
+      setFeedback(
+        isNetworkError
+          ? 'La connexion semble indisponible. Vérifiez votre réseau puis réessayez.'
+          : 'Votre demande n’a pas pu être envoyée. Vérifiez les informations puis réessayez.',
+        'error'
+      );
+      window.kajazomaTrack('reservation_error', { method: 'supabase' });
+      setLoading(false);
+    }
+  });
+})();
+</script></body></html>
