@@ -17,10 +17,10 @@ setup('authenticate staff user', async ({ page }) => {
 
   await page.goto('/admin/reservations.html', { waitUntil: 'networkidle' });
 
-  await page.locator('input[type="email"]').fill(email);
-  await page.locator('input[type="password"]').fill(password);
-  await page.locator('button[type="submit"]').click();
+  await page.locator('#email').fill(email);
+  await page.locator('#password').fill(password);
+  await page.locator('#loginForm button[type="submit"]').click();
 
-  await expect(page.locator('body')).not.toContainText('Connexion', { timeout: 15_000 });
+  await expect(page.locator('#app')).toBeVisible({ timeout: 15_000 });
   await page.context().storageState({ path: authFile });
 });
