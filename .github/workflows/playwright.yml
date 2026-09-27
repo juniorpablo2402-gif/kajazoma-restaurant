@@ -1,0 +1,45 @@
+name: Kajazoma Playwright
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [mobile-v2]
+  pull_request:
+    branches: [mobile-v2]
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE_URL: ${{ secrets.KAJAZOMA_TEST_BASE_URL }}
+      PLAYWRIGHT_EMAIL: ${{ secrets.KAJAZOMA_PLAYWRIGHT_EMAIL }}
+      PLAYWRIGHT_PASSWORD: ${{ secrets.KAJAZOMA_PLAYWRIGHT_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Capture mobile screenshots
+        run: npm run test:visual
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kajazoma-playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
