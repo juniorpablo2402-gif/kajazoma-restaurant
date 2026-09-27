@@ -304,3 +304,215 @@ body.dish-modal-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .menu-card{transition:none}
 }
+
+
+/* MENU — PREMIUM EDITORIAL OVERRIDE
+   Scoped to #menu. CSS only; no JavaScript changes.
+*/
+#menu .section-head{
+  max-width:1100px;
+  margin:0 auto 42px;
+  align-items:end;
+}
+#menu .section-head h2{
+  font-size:clamp(48px,6vw,72px);
+  letter-spacing:-.045em;
+}
+#menu .price-note{
+  text-align:right;
+}
+#menu .tabs{
+  max-width:1100px;
+  margin:0 auto 58px;
+  display:flex;
+  flex-wrap:nowrap;
+  gap:30px;
+  align-items:center;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+#menu .tabs::-webkit-scrollbar{display:none}
+#menu .tab{
+  flex:0 0 auto;
+  min-height:44px;
+  padding:7px 0 9px;
+  background:transparent;
+  color:#8f938a;
+  border:0;
+  border-radius:0;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  white-space:nowrap;
+  position:relative;
+}
+#menu .tab::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:transparent;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .2s,background .2s;
+}
+#menu .tab.active,
+#menu .tab:hover{
+  background:transparent;
+  color:#f4efe5;
+  border-color:transparent;
+}
+#menu .tab.active::after,
+#menu .tab:hover::after{
+  background:var(--gold);
+  transform:scaleX(1);
+}
+#menu .menu-grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:block;
+  grid-template-columns:none;
+  gap:0;
+}
+#menu .menu-card{
+  position:relative;
+  display:block;
+  width:100%;
+  padding:25px 88px 25px 0;
+  border:0;
+  border-top:1px solid rgba(201,163,94,.16);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+  transition:padding-left .2s,border-color .2s,background .2s;
+}
+#menu .menu-card:last-child{
+  border-bottom:1px solid rgba(201,163,94,.16);
+}
+#menu .menu-card:hover{
+  transform:none;
+  border-color:rgba(201,163,94,.34);
+  background:rgba(255,255,255,.015);
+}
+#menu .menu-card:focus-visible{
+  border-color:rgba(201,163,94,.34);
+  outline:2px solid var(--gold);
+  outline-offset:4px;
+}
+#menu .menu-card .tag{
+  display:block;
+  margin:0 0 9px;
+  color:var(--gold);
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+}
+#menu .menu-card h3{
+  margin:0 0 8px;
+  color:#f4efe5;
+  font:500 clamp(24px,2.4vw,30px)/1.05 Georgia,serif;
+  letter-spacing:-.02em;
+}
+#menu .menu-card p{
+  max-width:650px;
+  margin:0;
+  color:#9ea39a;
+  font:400 14px/1.7 Inter,Arial,sans-serif;
+}
+#menu .menu-card .menu-meta{
+  position:absolute;
+  top:50%;
+  right:0;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:12px;
+  margin:0;
+  transform:translateY(-50%);
+}
+#menu .menu-card .price{
+  color:var(--gold-soft);
+  font:600 15px/1 Georgia,serif;
+  white-space:nowrap;
+}
+#menu .menu-card .menu-detail-hint{
+  display:none;
+}
+
+/* Editorial menu: compact, quiet, touch-friendly mobile version */
+@media(max-width:850px){
+  #menu .section-head{
+    margin-bottom:30px;
+  }
+  #menu .section-head h2{
+    font-size:clamp(42px,11vw,58px);
+  }
+  #menu .price-note{
+    text-align:left;
+  }
+  #menu .tabs{
+    margin:0 -5vw 34px;
+    padding:2px 5vw 8px;
+    gap:24px;
+  }
+  #menu .tab{
+    min-height:44px;
+    padding:8px 0 10px;
+    font-size:10px;
+  }
+  #menu .menu-card{
+    padding:21px 0;
+  }
+  #menu .menu-card h3{
+    max-width:calc(100% - 84px);
+    font-size:clamp(21px,5.8vw,25px);
+    line-height:1.08;
+  }
+  #menu .menu-card p{
+    max-width:calc(100% - 12px);
+    font-size:13px;
+    line-height:1.6;
+  }
+  #menu .menu-card .menu-meta{
+    position:static;
+    margin-top:10px;
+    transform:none;
+  }
+  #menu .menu-card .price{
+    font-size:14px;
+  }
+}
+@media(max-width:560px){
+  #menu .section-head{
+    margin-bottom:26px;
+  }
+  #menu .tabs{
+    gap:21px;
+    margin-bottom:30px;
+  }
+  #menu .menu-card{
+    padding:20px 0;
+  }
+  #menu .menu-card h3{
+    max-width:100%;
+    font-size:clamp(21px,6.3vw,25px);
+  }
+  #menu .menu-card p{
+    max-width:100%;
+    font-size:13px;
+  }
+  #menu .menu-card .menu-meta{
+    justify-content:flex-end;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #menu .tab::after,
+  #menu .menu-card{
+    transition:none;
+  }
+}
