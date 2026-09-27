@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#09100c;--ink2:#111a14;--cream:#f5f0e6;--paper:#fffdf8;--gold:#c9a35e;--line:rgba(9,16,12,.1);--muted:#747b73;--red:#9b4d3f;--green:#5e7b5d}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--cream);color:var(--ink);font-family:Manrope,Arial,sans-serif}body{overscroll-behavior-y:none}button,input,select,textarea{font:inherit}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--cream);color:var(--ink);font-family:Manrope,Arial,sans-serif}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}button,input,select,textarea{font:inherit}button{-webkit-tap-highlight-color:transparent}button:focus{outline:none}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid rgba(201,163,94,.7);outline-offset:2px}
 [hidden]{display:none!important}.app{min-height:100vh;background:var(--cream);padding-bottom:82px}.top{height:64px;background:rgba(9,16,12,.98);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:4;border-bottom:1px solid rgba(201,163,94,.18)}.brand{display:flex;gap:10px;align-items:center;color:#fff;text-decoration:none;font-size:10px;letter-spacing:.16em;font-weight:700}.mark{width:30px;height:30px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:Georgia,serif;font-size:17px}.top-actions{display:flex;gap:10px;align-items:center}.user{font-size:10px;color:#aeb6ae;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.btn{border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;padding:8px 11px;border-radius:999px;font-size:10px;cursor:pointer}
 .shell{max-width:760px;margin:auto;padding:22px 16px 36px}.heading{display:block;margin-bottom:20px}.eyebrow{font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#9d7b3f}h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:5px 0}h1{font-size:42px;line-height:.92}.sub{color:var(--muted);font-size:11px;line-height:1.6;margin:10px 0 0}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.stat{padding:13px 15px;background:var(--paper);border:1px solid var(--line);border-radius:14px}.stat b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:500;line-height:1}.stat span{display:block;font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.13em;margin-top:5px}
 .feedback{padding:11px 13px;margin:0 0 12px;border-left:2px solid var(--gold);background:rgba(201,163,94,.08);font-size:11px}.error{border-left-color:var(--red);background:rgba(155,77,63,.08)}
@@ -18,7 +18,7 @@
 .reservations{display:flex;flex-direction:column;gap:9px}.reservation-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:15px;cursor:pointer;box-shadow:0 2px 12px rgba(9,16,12,.03);transition:transform .15s ease,box-shadow .15s ease}.reservation-card:active{transform:scale(.99)}.card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.customer{font-size:14px;font-weight:700;line-height:1.25}.meta{font-size:10px;color:var(--muted);margin-top:4px}.reservation-main{display:flex;align-items:center;gap:9px;margin-top:14px}.date-block{font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;line-height:1}.time-block{font-size:12px;font-weight:700}.dot{width:4px;height:4px;border-radius:50%;background:var(--gold)}.people{margin-left:auto;font-size:11px;color:var(--muted)}.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:13px;padding-top:11px;border-top:1px solid var(--line)}.received{font-size:9px;color:var(--muted)}.pill{display:inline-flex;align-items:center;min-height:24px;padding:4px 8px;border-radius:999px;font-size:8px;letter-spacing:.08em;text-transform:uppercase;border:1px solid}.pending{color:#87692d;background:#faf5e8}.confirmed{color:var(--green);background:#eef4ec}.declined,.cancelled,.no_show{color:var(--red);background:#f8eeeb}.completed{color:#59646c;background:#eef1f2}.arrived{color:#416d63;background:#eaf2ef}.empty{padding:48px 20px;text-align:center;color:var(--muted);background:var(--paper);border:1px dashed var(--line);border-radius:16px;font-size:11px}
 .bottom-nav{position:fixed;z-index:7;left:12px;right:12px;bottom:12px;height:58px;background:rgba(9,16,12,.97);border:1px solid rgba(201,163,94,.18);border-radius:18px;display:flex;align-items:center;justify-content:space-around;box-shadow:0 12px 35px rgba(0,0,0,.22)}.nav-item{border:0;background:transparent;color:#aeb6ae;font-size:9px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 15px;cursor:pointer}.nav-item.active{color:#fff}.nav-icon{font-size:16px;line-height:1}.nav-item.active .nav-icon{color:var(--gold)}
 .overlay{position:fixed;inset:0;background:rgba(9,16,12,.48);display:none;z-index:8}.overlay.open{display:block}.drawer{position:fixed;z-index:9;right:0;top:0;height:100vh;width:min(500px,100%);background:var(--cream);transform:translateX(100%);transition:transform .25s ease;box-shadow:-18px 0 45px rgba(0,0,0,.16);overflow:auto}.drawer.open{transform:translateX(0)}.drawer-head{background:var(--ink);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:flex-start}.drawer-head h2{font-size:30px;margin:3px 0 0}.close{border:0;background:rgba(255,255,255,.08);color:#fff;width:36px;height:36px;border-radius:50%;font-size:22px;cursor:pointer}.drawer-body{padding:20px}.detail-label{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:18px}.detail-value{font-size:13px;margin-top:5px;line-height:1.5}.detail-value a{color:inherit}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}.actions button{min-height:44px;padding:10px;border:1px solid var(--ink);background:var(--paper);border-radius:10px;cursor:pointer;font-size:11px}.actions .danger{border-color:rgba(155,77,63,.45);color:var(--red)}.actions .muted{border-color:var(--line);color:var(--muted)}.reschedule{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}.reschedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.reschedule-grid label{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.reschedule-grid input{width:100%;margin-top:5px;min-height:44px;border:1px solid var(--line);background:var(--paper);padding:10px;border-radius:10px}.reschedule-save{margin-top:8px;width:100%;min-height:44px;border:0;background:var(--ink);color:#fff;border-radius:10px;cursor:pointer;font-size:11px}.actions .confirm{background:var(--ink);color:#fff}.note{width:100%;min-height:100px;border:1px solid var(--line);background:var(--paper);padding:11px;margin-top:8px;border-radius:10px;resize:vertical}.save-note{margin-top:8px;border:0;background:var(--gold);padding:11px 15px;border-radius:10px;cursor:pointer;font-size:11px}
-.login{min-height:100svh;background:var(--cream);display:grid;grid-template-rows:36svh 64svh;overflow:hidden}.private-rail{padding:28px 22px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#09100c 0%,#142019 100%)}.private-brand{font-size:10px;letter-spacing:.2em;font-weight:700}.private-mark{width:38px;height:38px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font:21px Georgia,serif;margin-bottom:14px}.private-copy h1{font-size:46px;line-height:.78;margin:0;color:#f7f1e5}.private-copy p,.private-foot{display:none}.login-card{width:100%;background:var(--cream);padding:28px 22px 32px;display:flex;flex-direction:column;justify-content:center}.login-card .eyebrow{margin-bottom:7px}.login-card h1{font-size:32px;line-height:.95;margin:0 0 8px}.login-card p{font-size:11px;color:var(--muted);line-height:1.5;margin:0 0 14px}.login-card label{display:block;font-size:9px;font-weight:700;margin:11px 0 5px;letter-spacing:.04em}.login-card input{width:100%;padding:12px;border:1px solid var(--line);background:var(--paper);border-radius:10px;min-height:44px;font-size:14px}.login-card button{width:100%;margin-top:16px;padding:13px;min-height:46px;border:0;border-radius:11px;background:var(--ink);color:#fff;cursor:pointer;font-size:12px}.login-card button:disabled{opacity:.6}.login-feedback{margin-top:10px;font-size:10px;color:var(--red);min-height:14px}
+.login{min-height:100svh;background:var(--cream);display:grid;grid-template-rows:36svh 64svh;overflow:hidden;opacity:1;transform:none;transition:opacity .38s ease,transform .38s ease}.login.is-leaving{opacity:0;transform:translateY(-10px);pointer-events:none}.app.is-entering{animation:appEnter .48s cubic-bezier(.22,.8,.24,1) both}@keyframes appEnter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}.private-rail{padding:28px 22px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#09100c 0%,#142019 100%)}.private-brand{font-size:10px;letter-spacing:.2em;font-weight:700}.private-mark{width:38px;height:38px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font:21px Georgia,serif;margin-bottom:14px}.private-copy h1{font-size:46px;line-height:.78;margin:0;color:#f7f1e5}.private-copy p,.private-foot{display:none}.login-card{width:100%;background:var(--cream);padding:28px 22px 32px;display:flex;flex-direction:column;justify-content:center}.login-card .eyebrow{margin-bottom:7px}.login-card h1{font-size:32px;line-height:.95;margin:0 0 8px}.login-card p{font-size:11px;color:var(--muted);line-height:1.5;margin:0 0 14px}.login-card label{display:block;font-size:9px;font-weight:700;margin:11px 0 5px;letter-spacing:.04em}.login-card input{width:100%;padding:12px;border:1px solid var(--line);background:var(--paper);border-radius:10px;min-height:44px;font-size:14px}.login-card button{width:100%;margin-top:16px;padding:13px;min-height:46px;border:0;border-radius:11px;background:var(--ink);color:#fff;cursor:pointer;font-size:12px}.login-card button:disabled{opacity:.6}.login-feedback{margin-top:10px;font-size:10px;color:var(--red);min-height:14px}
 @media(min-width:700px){.login{grid-template-columns:minmax(360px,42%) 1fr;grid-template-rows:1fr}.private-rail{min-height:100svh;padding:52px 56px}.private-copy p{display:block;max-width:360px;color:#aeb7ae;font-size:12px;line-height:1.8}.private-foot{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#6f786f}.private-copy h1{font-size:58px}.login-card{padding:52px 64px;max-width:620px}.login-card h1{font-size:44px}.shell{padding-top:34px}.heading{display:flex;justify-content:space-between;gap:28px;align-items:flex-end}.sub{max-width:560px}.stats{display:flex;min-width:250px;margin-top:0}.filters{display:flex}.filters input{width:auto;min-width:230px;grid-column:auto}.reservations{gap:10px}.reservation-card{padding:17px}.bottom-nav{left:50%;right:auto;transform:translateX(-50%);width:360px}}
 @media(max-width:360px){.private-copy h1{font-size:40px}.login-card{padding-left:18px;padding-right:18px}.shell{padding-left:12px;padding-right:12px}.top{padding:0 13px}.brand span:last-child{font-size:9px}}
 </style>
@@ -86,6 +86,7 @@
   const reservationsList=document.querySelector('#reservationsList'), drawer=document.querySelector('#drawer'), overlay=document.querySelector('#overlay'), drawerBody=document.querySelector('#drawerBody');
   const search=document.querySelector('#search'), dateFilter=document.querySelector('#dateFilter'), statusFilter=document.querySelector('#statusFilter');
   let reservations=[];
+  let authTransitioning=false;
 
   const esc=(v) => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const formatDate=(v) => new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(v+'T12:00:00'));
@@ -144,7 +145,16 @@
       <div class="actions">${actions[r.status]||''}</div>`;
     drawer.classList.add('open');overlay.classList.add('open');
     drawerBody.querySelector('#saveNote').addEventListener('click',()=>updateReservation(r.id,{admin_note:drawerBody.querySelector('#adminNote').value}));
-    drawerBody.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('click',()=>updateReservation(r.id,{status:btn.dataset.status})));
+    drawerBody.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('click',async(e)=>{
+      e.preventDefault();
+      if(btn.disabled)return;
+      btn.dataset.busy='true';
+      const nextLabel=btn.textContent;
+      btn.disabled=true;
+      btn.textContent='Enregistrement…';
+      const ok=await updateReservation(r.id,{status:btn.dataset.status});
+      if(!ok){btn.disabled=false;btn.textContent=nextLabel;delete btn.dataset.busy}
+    }));
     if(canReschedule){
       drawerBody.querySelector('#saveReschedule').addEventListener('click',async()=>{
         const newDate=drawerBody.querySelector('#newDate').value,newTime=drawerBody.querySelector('#newTime').value;
@@ -154,10 +164,18 @@
     }
   }
   async function updateReservation(id,patch){
-    const {error}=await supabaseClient.from('reservations').update(patch).eq('id',id);
-    if(error){showFeedback('La modification n’a pas pu être enregistrée.',true);return;}
-    const r=reservations.find(x=>x.id===id);if(r)Object.assign(r,patch);
+    const actionButton=drawerBody.querySelector('[data-status][data-busy="true"]');
+    if(actionButton){actionButton.disabled=true;actionButton.setAttribute('aria-busy','true')}
+    const {data,error}=await supabaseClient.from('reservations').update(patch).eq('id',id).select('id,created_at,updated_at,customer_name,phone,email,reservation_date,reservation_time,party_size,message,status,source,admin_note').single();
+    if(error){
+      console.error('Kajazoma reservation update error',error);
+      if(actionButton){actionButton.disabled=false;actionButton.removeAttribute('aria-busy')}
+      showFeedback(error.message||'La modification n’a pas pu être enregistrée.',true);
+      return false;
+    }
+    const r=reservations.find(x=>x.id===id);if(r&&data)Object.assign(r,data);
     render();showFeedback('Modification enregistrée.');openReservation(id);
+    return true;
   }
   function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('open')}
   overlay.addEventListener('click',closeDrawer);document.querySelector('#closeDrawer').addEventListener('click',closeDrawer);
@@ -167,10 +185,35 @@
   document.querySelector('#navReservations').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
   document.querySelector('#logout').addEventListener('click',async()=>{await supabaseClient.auth.signOut();});
   function showApp(session){
-    login.hidden=true;
-    app.hidden=false;
+    if(authTransitioning)return;
+    authTransitioning=true;
     document.querySelector('#userEmail').textContent=session?.user?.email||'';
-    window.setTimeout(loadReservations,0);
+    app.hidden=false;
+    app.classList.remove('is-entering');
+    void app.offsetWidth;
+    app.classList.add('is-entering');
+    login.classList.add('is-leaving');
+    window.setTimeout(()=>{
+      login.hidden=true;
+      login.classList.remove('is-leaving');
+      app.classList.remove('is-entering');
+      authTransitioning=false;
+      loadReservations();
+    },390);
+  }
+  function showLogin(){
+    if(authTransitioning)return;
+    authTransitioning=true;
+    app.hidden=false;
+    app.style.opacity='0';
+    app.style.transform='translateY(12px)';
+    window.setTimeout(()=>{
+      app.hidden=true;
+      app.style.opacity='';app.style.transform='';
+      login.hidden=false;
+      login.classList.remove('is-leaving');
+      authTransitioning=false;
+    },380);
   }
   loginForm.addEventListener('submit',async e=>{
     e.preventDefault();
@@ -190,7 +233,8 @@
     if(data?.session) showApp(data.session);
   });
   supabaseClient.auth.onAuthStateChange((_event,session)=>{
-    if(!session){login.hidden=false;app.hidden=true;return;}
+    if(!session){showLogin();return;}
+    if(login.hidden&& !app.hidden)return;
     showApp(session);
   });
   supabaseClient.auth.getSession().then(({data})=>{
