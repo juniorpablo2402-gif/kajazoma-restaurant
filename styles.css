@@ -516,3 +516,115 @@ body.dish-modal-open{overflow:hidden}
     transition:none;
   }
 }
+
+
+/* MENU — MOBILE REGRESSION HARDENING
+   Targets the five highest-risk mobile regressions.
+*/
+#menu .menu-card,
+#menu .tab{
+  -webkit-tap-highlight-color:transparent;
+}
+
+@media(max-width:850px){
+  /* Prevent legacy desktop price positioning from ever affecting mobile. */
+  #menu .menu-card{
+    position:relative;
+    min-width:0;
+    overflow:visible;
+  }
+
+  /* Names/descriptions must always have the full content width.
+     Price is below the content on mobile. */
+  #menu .menu-card h3,
+  #menu .menu-card p{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+
+  #menu .menu-card .menu-meta{
+    position:static;
+    width:100%;
+    min-width:0;
+    margin-top:10px;
+    transform:none;
+    justify-content:flex-end;
+    align-items:center;
+  }
+
+  #menu .menu-card .price{
+    position:static;
+    display:block;
+    white-space:nowrap;
+    flex:0 0 auto;
+  }
+
+  /* Keep the editorial rhythm compact without creating card-like blocks. */
+  #menu .menu-card{
+    border-left:0;
+    border-right:0;
+    border-radius:0;
+    box-shadow:none;
+    background:transparent;
+  }
+
+  /* Touch-friendly editorial filters: text + underline, never pills. */
+  #menu .tabs{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  #menu .tab{
+    flex:0 0 auto;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+  }
+
+  #menu .tab.active,
+  #menu .tab:hover{
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:#f4efe5;
+  }
+}
+
+@media(max-width:560px){
+  #menu .menu-card{
+    padding:18px 0;
+  }
+
+  #menu .menu-card h3{
+    font-size:clamp(21px,6.3vw,25px);
+    line-height:1.08;
+  }
+
+  #menu .menu-card p{
+    font-size:13px;
+    line-height:1.58;
+  }
+
+  #menu .menu-card .menu-meta{
+    margin-top:9px;
+  }
+}
+
+/* On touch devices, don't rely on hover for the active visual state. */
+@media(hover:none){
+  #menu .menu-card:hover{
+    background:transparent;
+    border-color:rgba(201,163,94,.16);
+  }
+
+  #menu .tab:hover{
+    color:#8f938a;
+  }
+
+  #menu .tab.active:hover{
+    color:#f4efe5;
+  }
+}
