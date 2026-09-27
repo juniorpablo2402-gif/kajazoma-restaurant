@@ -47,6 +47,42 @@ h1{font-size:44px;line-height:.92;margin:5px 0}
  .grid{grid-template-columns:1fr}.top{padding:0 13px}.user{display:none}h1{font-size:39px}
 }
 @media(max-width:420px){.panel{padding:14px}.hero{margin-top:14px}.row{grid-template-columns:minmax(0,1fr) auto}.shell{padding-left:12px;padding-right:12px}}
+/* mobile QA refinement */
+@media(max-width:760px){
+  body{font-size:12px}
+  .shell{max-width:none;padding:18px 12px 92px}
+  .top{height:58px}
+  .hero{margin:12px 0 12px;padding:15px;border-radius:16px}
+  .hero-grid{gap:8px}
+  .hero-copy{padding:2px 4px 6px}
+  .hero h2{font-size:28px;line-height:.94;max-width:270px}
+  .sub{font-size:10px;line-height:1.45;margin-top:7px}
+  .metric{min-height:82px;padding:10px;border-radius:12px}
+  .metric b{font-size:25px;line-height:1}
+  .metric span{font-size:7px;line-height:1.25}
+  .grid{gap:10px}
+  .panel{padding:13px;border-radius:14px}
+  .panel h2{font-size:23px;line-height:1}
+  .panel-head{margin-bottom:7px}
+  .row{padding:10px 0;gap:8px}
+  .row strong{font-size:10px;line-height:1.25}
+  .row small{font-size:8px;line-height:1.35}
+  .pill{font-size:7px;min-height:20px;padding:4px 7px;white-space:nowrap}
+  .alert{padding:9px;font-size:9px;line-height:1.4}
+  .bottom{left:10px;right:10px;bottom:10px;height:56px;border-radius:16px}
+  .nav{font-size:8px;padding:6px 9px}
+  .nav span{font-size:15px}
+  .drawer .card{padding:16px}
+}
+@media(max-width:390px){
+  .hero-grid{grid-template-columns:1fr 1fr}
+  .hero-copy{padding-bottom:5px}
+  .metric{min-height:78px}
+  .metric b{font-size:23px}
+  .panel{padding:12px}
+  .panel h2{font-size:21px}
+  .row{padding:9px 0}
+}
 </style>
 </head>
 <body>
