@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Service — Kajazoma</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#09100c;--ink2:#132018;--cream:#f5f0e6;--paper:#fffdf8;--gold:#c9a35e;--line:rgba(9,16,12,.1);--muted:#747b73;--red:#9b4d3f;--green:#5e7b5d;--blue:#4d7770}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--cream);color:var(--ink);font-family:Manrope,Arial,sans-serif}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}button{font:inherit;-webkit-tap-highlight-color:transparent}button:focus{outline:none}button:focus-visible{outline:2px solid rgba(201,163,94,.7);outline-offset:2px}[hidden]{display:none!important}
+.app{min-height:100vh;background:var(--cream);padding-bottom:82px}.top{height:64px;background:rgba(9,16,12,.98);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:5;border-bottom:1px solid rgba(201,163,94,.18)}.brand{display:flex;gap:10px;align-items:center;color:#fff;text-decoration:none;font-size:10px;letter-spacing:.16em;font-weight:700}.mark{width:30px;height:30px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:Georgia,serif;font-size:17px}.top-actions{display:flex;gap:10px;align-items:center}.user{font-size:10px;color:#aeb6ae;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.btn{border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;padding:8px 11px;border-radius:999px;font-size:10px;cursor:pointer}
+.shell{max-width:1180px;margin:auto;padding:22px 16px 36px}.heading{display:flex;justify-content:space-between;gap:22px;align-items:flex-end;margin-bottom:18px}.eyebrow{font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:#9d7b3f}h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:5px 0}h1{font-size:44px;line-height:.92}.sub{color:var(--muted);font-size:11px;line-height:1.6;margin:10px 0 0}.service-meta{text-align:right;color:var(--muted);font-size:10px}.service-meta strong{display:block;color:var(--ink);font-size:12px;margin-bottom:3px}
+.hero{border-radius:18px;overflow:hidden;background:linear-gradient(120deg,rgba(9,16,12,.98),rgba(20,32,25,.9));color:#fff;padding:22px;position:relative;margin-bottom:14px}.hero:after{content:"";position:absolute;inset:auto -8% -65% 42%;height:180%;background:radial-gradient(circle,rgba(201,163,94,.18),transparent 60%);pointer-events:none}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(120px,.7fr));gap:10px;align-items:stretch}.hero-copy{padding:4px 6px}.hero .eyebrow{color:#c9a35e}.hero h2{font-size:34px;line-height:.95;color:#fff;margin-top:8px}.hero p{font-size:10px;color:#c5cec5;max-width:430px;line-height:1.6;margin:8px 0 0}.metric{border:1px solid rgba(201,163,94,.18);background:rgba(255,255,255,.035);border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;min-height:112px}.metric .icon{font-size:16px;color:var(--gold)}.metric b{font:500 32px "Cormorant Garamond",Georgia,serif}.metric span{font-size:8px;color:#aeb6ae;text-transform:uppercase;letter-spacing:.12em}
+.feedback{padding:11px 13px;margin:0 0 12px;border-left:2px solid var(--gold);background:rgba(201,163,94,.08);font-size:11px}.error{border-left-color:var(--red);background:rgba(155,77,63,.08)}
+.grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.8fr);gap:14px}.stack{display:flex;flex-direction:column;gap:14px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 2px 12px rgba(9,16,12,.03)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.panel-head h2{font-size:25px;margin:0}.count{min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:#f2e6ca;color:#86652a;display:inline-grid;place-items:center;font:600 10px Manrope}.link{border:0;background:transparent;color:#80642e;font-size:9px;cursor:pointer}
+.row{display:grid;grid-template-columns:48px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}.row:first-of-type{border-top:0}.table-badge{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700}.row-main{min-width:0}.row-main strong{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.row-main span{display:block;color:var(--muted);font-size:9px;margin-top:3px}.row-time{font-size:10px;font-weight:700;white-space:nowrap}.row-actions{display:flex;gap:4px}.mini{border:0;background:transparent;color:var(--muted);font-size:16px;padding:5px;cursor:pointer}.pill{display:inline-flex;align-items:center;min-height:22px;padding:4px 8px;border-radius:999px;font-size:8px;letter-spacing:.07em;text-transform:uppercase;border:1px solid;white-space:nowrap}.pending{color:#87692d;background:#faf5e8}.confirmed{color:var(--green);background:#eef4ec}.arrived{color:var(--blue);background:#eaf2ef}.declined,.cancelled,.no_show{color:var(--red);background:#f8eeeb}.completed{color:#59646c;background:#eef1f2}
+.priority{display:flex;gap:11px;align-items:center;padding:11px;border-radius:12px;background:#f7f1e5;border:1px solid rgba(201,163,94,.15);margin-top:8px;cursor:pointer}.priority:first-of-type{margin-top:0}.priority-icon{width:36px;height:36px;border-radius:50%;background:#e9d7ad;color:#7e6027;display:grid;place-items:center;font-size:15px;flex:0 0 auto}.priority strong{display:block;font-size:10px}.priority span{display:block;font-size:9px;color:var(--muted);margin-top:3px}.priority .arrow{margin-left:auto;color:#6e6f68}
+.note{padding:11px 12px;border-radius:12px;background:#f5f0e6;border:1px solid var(--line);margin-top:8px;cursor:pointer}.note:first-of-type{margin-top:0}.note-top{display:flex;justify-content:space-between;gap:8px}.note strong{font-size:10px}.note small{color:var(--muted);font-size:8px}.note p{margin:5px 0 0;font-size:9px;color:var(--muted);line-height:1.5}.note.alert{background:#fbefec;border-color:rgba(155,77,63,.14)}.note.good{background:#eef4ec;border-color:rgba(94,123,93,.14)}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;background:var(--ink);padding:10px;border-radius:16px;color:#fff}.quick button{min-height:52px;border:1px solid rgba(201,163,94,.18);background:rgba(255,255,255,.025);color:#fff;border-radius:11px;font-size:9px;cursor:pointer}.quick button span{display:block;font-size:16px;color:var(--gold);margin-bottom:4px}
+.bottom-nav{position:fixed;z-index:7;left:12px;right:12px;bottom:12px;height:58px;background:rgba(9,16,12,.97);border:1px solid rgba(201,163,94,.18);border-radius:18px;display:flex;align-items:center;justify-content:space-around;box-shadow:0 12px 35px rgba(0,0,0,.22)}.nav-item{border:0;background:transparent;color:#aeb6ae;font-size:9px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:7px 12px;cursor:pointer}.nav-item.active{color:#fff}.nav-icon{font-size:16px;line-height:1}.nav-item.active .nav-icon{color:var(--gold)}
+.drawer-overlay{position:fixed;inset:0;background:rgba(9,16,12,.48);display:none;z-index:8}.drawer-overlay.open{display:block}.drawer{position:fixed;z-index:9;right:0;top:0;height:100vh;width:min(500px,100%);background:var(--cream);transform:translateX(100%);transition:transform .25s ease;box-shadow:-18px 0 45px rgba(0,0,0,.16);overflow:auto}.drawer.open{transform:translateX(0)}.drawer-head{background:var(--ink);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:flex-start}.drawer-head h2{font-size:30px}.close{border:0;background:rgba(255,255,255,.08);color:#fff;width:36px;height:36px;border-radius:50%;font-size:22px;cursor:pointer}.drawer-body{padding:20px 20px calc(28px + env(safe-area-inset-bottom))}.detail-label{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:18px}.detail-value{font-size:13px;margin-top:5px;line-height:1.5}.detail-value a{color:inherit}.drawer-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px;position:sticky;bottom:0;background:var(--cream);padding:12px 0 calc(8px + env(safe-area-inset-bottom))}.drawer-actions button{min-height:44px;border:1px solid var(--ink);background:var(--paper);border-radius:10px;cursor:pointer;font-size:11px}.drawer-actions .primary{background:var(--ink);color:#fff}
+.login{min-height:100svh;background:var(--cream);display:grid;grid-template-rows:36svh 64svh}.private-rail{padding:28px 22px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#09100c 0%,#142019 100%)}.private-mark{width:38px;height:38px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font:21px Georgia,serif;margin-bottom:14px}.private-brand{font-size:10px;letter-spacing:.2em;font-weight:700}.private-copy h1{font:500 46px/0.78 "Cormorant Garamond",Georgia,serif;color:#f7f1e5;margin:0}.private-copy p{display:none}.login-card{width:100%;background:var(--cream);padding:28px 22px 32px;display:flex;flex-direction:column;justify-content:center}.login-card .eyebrow{margin-bottom:7px}.login-card h1{font-size:32px;line-height:.95;margin:0 0 8px}.login-card p{font-size:11px;color:var(--muted);line-height:1.5;margin:0 0 14px}.login-card label{display:block;font-size:9px;font-weight:700;margin:11px 0 5px}.login-card input{width:100%;padding:12px;border:1px solid var(--line);background:var(--paper);border-radius:10px;min-height:44px;font-size:14px}.login-card button{width:100%;margin-top:16px;padding:13px;min-height:46px;border:0;border-radius:11px;background:var(--ink);color:#fff;cursor:pointer;font-size:12px}.login-feedback{margin-top:10px;font-size:10px;color:var(--red);min-height:14px}
+@media(min-width:700px){.login{grid-template-columns:minmax(360px,42%) 1fr;grid-template-rows:1fr}.private-rail{min-height:100svh;padding:52px 56px}.private-copy p{display:block;max-width:360px;color:#aeb7ae;font-size:12px;line-height:1.8}.shell{padding-top:34px}.private-copy h1{font-size:58px}.login-card{padding:52px 64px;max-width:620px}.quick{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:760px){.heading{display:block}.service-meta{text-align:left;margin-top:12px}.hero-grid{grid-template-columns:1fr 1fr}.hero-copy{grid-column:1/-1}.grid{grid-template-columns:1fr}.row{grid-template-columns:42px minmax(0,1fr) auto}.row .pill{display:none}.row-actions{display:none}}
+@media(max-width:420px){.shell{padding-left:12px;padding-right:12px}.top{padding:0 13px}.user{display:none}.hero{padding:16px}.hero-grid{grid-template-columns:1fr 1fr}.hero-copy{grid-column:1/-1}.hero h2{font-size:29px}.metric{min-height:92px;padding:11px}.metric b{font-size:27px}.panel{padding:14px}.row-time{font-size:9px}.quick{grid-template-columns:repeat(2,1fr)}h1{font-size:39px}}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+<section class="private-rail"><div><div class="private-mark">K</div><div class="private-brand">KAJAZOMA · ESPACE ÉQUIPE</div></div><div class="private-copy"><h1>Le service.<br>En mouvement.</h1><p>Une vue pensée pour la salle : tables à servir, arrivées prochaines, priorités et notes utiles au bon moment.</p></div><div class="private-brand" style="color:#6f786f;font-size:8px">SERVICE · CONFIDENTIEL · KAJAZOMA</div></section>
+<form id="loginForm" class="login-card"><span class="eyebrow">Connexion équipe</span><h1>Accueil service.</h1><p>Accédez à votre service Kajazoma.</p><label for="email">Email</label><input id="email" type="email" autocomplete="username" required><label for="password">Mot de passe</label><input id="password" type="password" autocomplete="current-password" required><button type="submit">Entrer dans le service</button><div id="loginFeedback" class="login-feedback" role="alert"></div></form>
+</div>
+<div id="app" class="app" hidden>
+<header class="top"><a class="brand" href="/admin/reservations.html"><span class="mark">K</span><span>KAJAZOMA · SERVICE</span></a><div class="top-actions"><span id="userEmail" class="user"></span><button id="refresh" class="btn">Actualiser</button><button id="logout" class="btn">Sortir</button></div></header>
+<main class="shell">
+<div class="heading"><div><span class="eyebrow">Service du jour</span><h1 id="greeting">Bonsoir.</h1><p class="sub">Voici ce qui se passe en salle et ce qui mérite votre attention maintenant.</p></div><div class="service-meta"><strong id="todayLabel">—</strong><span>Service du soir · vue temps réel</span></div></div>
+<div id="feedback" class="feedback" hidden></div>
+<section class="hero"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">Que se passe-t-il en salle ?</span><h2>Le service est en mouvement.</h2><p id="heroSub">Chargement des tables du jour…</p></div><div class="metric"><span class="icon">♜</span><b id="serveCount">0</b><span>Tables à servir</span></div><div class="metric"><span class="icon">◉</span><b id="activeCount">0</b><span>En service</span></div><div class="metric"><span class="icon">◷</span><b id="upcomingCount">0</b><span>Arrivées prochaines</span></div></div></section>
+<div class="grid">
+<div class="stack">
+<section class="panel"><div class="panel-head"><h2>Tables à servir <span class="count" id="serveBadge">0</span></h2><button class="link" id="showAllTables">Voir toutes →</button></div><div id="serveList"></div></section>
+<section class="panel"><div class="panel-head"><h2>Arrivées prochaines <span class="count" id="arrivalBadge">0</span></h2><button class="link" id="showAllArrivals">Voir toutes →</button></div><div id="arrivalList"></div></section>
+</div>
+<div class="stack">
+<section class="panel"><div class="panel-head"><h2>Actions prioritaires <span class="count" id="priorityBadge">0</span></h2></div><div id="priorityList"></div></section>
+<section class="panel"><div class="panel-head"><h2>Notes de salle</h2><button class="link" id="showNotes">Voir toutes →</button></div><div id="notesList"></div></section>
+</div>
+</div>
+<section class="quick"><button id="quickCall"><span>⌕</span>Appeler</button><button id="quickWhatsApp"><span>◌</span>WhatsApp</button><button id="quickTable"><span>♜</span>Voir une table</button><button id="quickNote"><span>✎</span>Ajouter une note</button><button id="quickReservations"><span>≡</span>Réservations</button></section>
+</main>
+</div>
+<nav class="bottom-nav" aria-label="Navigation équipe"><button class="nav-item active" id="navService"><span class="nav-icon">⌂</span><span>Accueil</span></button><button class="nav-item" id="navTables"><span class="nav-icon">♜</span><span>Tables</span></button><button class="nav-item" id="navReservations"><span class="nav-icon">≡</span><span>Réservations</span></button><button class="nav-item" id="navLogout"><span class="nav-icon">↪</span><span>Sortir</span></button></nav>
+<div id="drawerOverlay" class="drawer-overlay"></div>
+<aside id="drawer" class="drawer"><div class="drawer-head"><div><span class="eyebrow">Table & réservation</span><h2 id="drawerTitle">—</h2></div><button id="closeDrawer" class="close">×</button></div><div class="drawer-body" id="drawerBody"></div></aside>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(()=> {
+const SUPABASE_URL='https://oxvwfojzhcjdjywckkwu.supabase.co', SUPABASE_PUBLISHABLE_KEY='sb_publishable_MvGe-HERTKQhe7ezSfKwww_gDvoWoTt';
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const login=document.querySelector('#login'),app=document.querySelector('#app'),loginForm=document.querySelector('#loginForm'),loginFeedback=document.querySelector('#loginFeedback'),drawer=document.querySelector('#drawer'),overlay=document.querySelector('#drawerOverlay'),drawerBody=document.querySelector('#drawerBody');
+let reservations=[],currentReservation=null;
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const localDate=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())};
+const formatDate=v=>new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(v+'T12:00:00'));
+const formatTime=v=>String(v||'').slice(0,5);
+const statusLabel={pending:'En attente',confirmed:'Confirmée',arrived:'Arrivée',declined:'Refusée',cancelled:'Annulée',completed:'Terminée',no_show:'No-show'};
+const today=()=>localDate();
+const showFeedback=(m,error=false)=>{const e=document.querySelector('#feedback');e.textContent=m;e.className='feedback'+(error?' error':'');e.hidden=false};
+const hideFeedback=()=>document.querySelector('#feedback').hidden=true;
+function serviceReservations(){return reservations.filter(r=>r.reservation_date===today())}
+function timeMinutes(t){const [h,m]=String(t||'').split(':').map(Number);return h*60+(m||0)}
+function nowMinutes(){const d=new Date();return d.getHours()*60+d.getMinutes()}
+function isFuture(r){return timeMinutes(r.reservation_time)>=nowMinutes()}
+function loadGreeting(){const h=new Date().getHours();document.querySelector('#greeting').textContent=(h<12?'Bonjour':h<18?'Bon après-midi':'Bonsoir')+' à l’équipe.';document.querySelector('#todayLabel').textContent=new Intl.DateTimeFormat('fr-FR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).format(new Date())}
+async function load(){
+hideFeedback();
+const {data,error}=await supabaseClient.from('reservations').select('id,created_at,updated_at,customer_name,phone,email,reservation_date,reservation_time,party_size,message,status,source,admin_note').eq('reservation_date',today()).order('reservation_time',{ascending:true});
+if(error){showFeedback('Impossible de charger le service. Vérifiez que le compte connecté possède bien le rôle administrateur.',true);return}
+reservations=data||[];render()
+}
+function render(){
+loadGreeting();
+const todayRows=serviceReservations();
+const serving=todayRows.filter(r=>['confirmed','arrived'].includes(r.status));
+const active=todayRows.filter(r=>r.status==='arrived');
+const upcoming=todayRows.filter(r=>r.status==='confirmed'&&isFuture(r));
+const pending=todayRows.filter(r=>r.status==='pending');
+document.querySelector('#serveCount').textContent=serving.length;
+document.querySelector('#activeCount').textContent=active.length;
+document.querySelector('#upcomingCount').textContent=upcoming.length;
+document.querySelector('#serveBadge').textContent=serving.length;
+document.querySelector('#arrivalBadge').textContent=upcoming.length;
+document.querySelector('#heroSub').textContent=todayRows.length?todayRows.length+' réservation'+(todayRows.length>1?'s':'')+' aujourd’hui · '+serving.length+' table'+(serving.length>1?'s':'')+' à suivre maintenant.':'Aucune réservation prévue aujourd’hui.';
+renderTables(serving);renderArrivals(upcoming);renderPriorities(pending,upcoming,active);renderNotes(todayRows)
+}
+function row(r,actionLabel='Voir'){
+return '<div class="row" data-id="'+esc(r.id)+'"><div class="table-badge">T'+(Math.min(99,Math.max(1,Number(r.party_size)||1)) )+'</div><div class="row-main"><strong>'+esc(r.customer_name)+'</strong><span>'+esc(r.party_size)+(r.party_size===1?' personne':' personnes')+'</span></div><span class="row-time">'+formatTime(r.reservation_time)+'</span><span class="pill '+esc(r.status)+'">'+esc(statusLabel[r.status]||r.status)+'</span><div class="row-actions"><button class="mini" data-open="'+esc(r.id)+'" aria-label="'+actionLabel+'">›</button></div></div>'
+}
+function renderTables(rows){const el=document.querySelector('#serveList');el.innerHTML=rows.length?rows.map(r=>row(r)).join(''):'<div class="empty">Aucune table à suivre pour le moment.</div>';bindOpen(el)}
+function renderArrivals(rows){const el=document.querySelector('#arrivalList');el.innerHTML=rows.length?rows.slice(0,8).map(r=>row(r,'Ouvrir')).join(''):'<div class="empty">Aucune arrivée prochaine.</div>';bindOpen(el)}
+function bindOpen(el){el.querySelectorAll('[data-id],[data-open]').forEach(node=>node.addEventListener('click',e=>{const id=node.dataset.id||node.dataset.open;openReservation(id)}))}
+function renderPriorities(pending,upcoming,active){
+const items=[];
+const now=nowMinutes();
+upcoming.filter(r=>timeMinutes(r.reservation_time)-now<=30).slice(0,2).forEach(r=>items.push({icon:'◷',title:'Arrivée dans '+Math.max(0,timeMinutes(r.reservation_time)-now)+' min',text:r.customer_name+' · '+r.party_size+' pers.',id:r.id}));
+pending.slice(0,2).forEach(r=>items.push({icon:'◉',title:'Confirmation en attente',text:r.customer_name+' · '+r.party_size+' pers.',id:r.id}));
+active.filter(r=>r.admin_note||r.message).slice(0,2).forEach(r=>items.push({icon:'✦',title:'Attention particulière',text:r.customer_name,id:r.id}));
+const el=document.querySelector('#priorityList');document.querySelector('#priorityBadge').textContent=items.length;el.innerHTML=items.length?items.slice(0,4).map(x=>'<div class="priority" data-id="'+esc(x.id)+'"><div class="priority-icon">'+x.icon+'</div><div><strong>'+esc(x.title)+'</strong><span>'+esc(x.text)+'</span></div><span class="arrow">›</span></div>').join(''):'<div class="empty">Aucune action prioritaire. Le service est sous contrôle.</div>';bindOpen(el)
+}
+function renderNotes(rows){
+const notes=[];
+rows.forEach(r=>{if(r.admin_note)notes.push({title:'Table · '+r.customer_name,text:r.admin_note,good:false,id:r.id});else if(r.message)notes.push({title:'Demande · '+r.customer_name,text:r.message,good:false,id:r.id})});
+const el=document.querySelector('#notesList');el.innerHTML=notes.length?notes.slice(0,5).map(n=>'<div class="note '+(n.text.toLowerCase().includes('allerg')?'alert':'')+' '+(n.text.toLowerCase().includes('anniversaire')?'good':'')+'" data-id="'+esc(n.id)+'"><div class="note-top"><strong>'+esc(n.title)+'</strong><small>aujourd’hui</small></div><p>'+esc(n.text)+'</p></div>').join(''):'<div class="empty">Aucune note de salle pour aujourd’hui.</div>';bindOpen(el)
+}
+function openReservation(id){
+const r=reservations.find(x=>x.id===id);if(!r)return;currentReservation=r;document.querySelector('#drawerTitle').textContent=r.customer_name;
+const msg=r.message?r.message.replace(/\n/g,'<br>'):'—';
+const next=r.status==='confirmed'?'arrived':r.status==='arrived'?'completed':null;
+const actionLabel=next==='arrived'?'Marquer comme arrivé':next==='completed'?'Terminer la réservation':'Aucune action de service';
+drawerBody.innerHTML='<div class="detail-label">Table</div><div class="detail-value">Service · '+formatTime(r.reservation_time)+' · '+r.party_size+' personne'+(r.party_size>1?'s':'')+'</div><div class="detail-label">Téléphone</div><div class="detail-value"><a href="tel:'+esc(r.phone)+'">'+esc(r.phone)+'</a></div><div class="detail-label">Message</div><div class="detail-value">'+msg+'</div><div class="detail-label">Statut</div><div class="detail-value"><span class="pill '+esc(r.status)+'">'+esc(statusLabel[r.status]||r.status)+'</span></div>'+(r.admin_note?'<div class="detail-label">Note de salle</div><div class="detail-value">'+esc(r.admin_note)+'</div>':'')+'<div class="drawer-actions">'+(next?'<button class="primary" id="serviceAction" data-next="'+next+'">'+actionLabel+'</button>':'')+'<button id="callGuest">Appeler</button></div>';
+drawer.classList.add('open');overlay.classList.add('open');
+drawerBody.querySelector('#callGuest')?.addEventListener('click',()=>window.location.href='tel:'+r.phone);
+drawerBody.querySelector('#serviceAction')?.addEventListener('click',async e=>{const b=e.currentTarget;b.disabled=true;b.textContent='Enregistrement…';const {error}=await supabaseClient.from('reservations').update({status:b.dataset.next}).eq('id',r.id).select('id').single();if(error){b.disabled=false;b.textContent=actionLabel;showFeedback(error.message||'Action impossible.',true);return}closeDrawer();await load()})
+}
+function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('open')}
+overlay.addEventListener('click',closeDrawer);document.querySelector('#closeDrawer').addEventListener('click',closeDrawer);
+document.querySelector('#refresh').addEventListener('click',load);document.querySelector('#navService').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));document.querySelector('#navReservations').addEventListener('click',()=>location.href='/admin/reservations.html');document.querySelector('#showAllTables').addEventListener('click',()=>document.querySelector('#serveList').scrollIntoView({behavior:'smooth'}));document.querySelector('#showAllArrivals').addEventListener('click',()=>document.querySelector('#arrivalList').scrollIntoView({behavior:'smooth'}));document.querySelector('#showNotes').addEventListener('click',()=>document.querySelector('#notesList').scrollIntoView({behavior:'smooth'}));document.querySelector('#navTables').addEventListener('click',()=>document.querySelector('#serveList').scrollIntoView({behavior:'smooth'}));document.querySelector('#quickReservations').addEventListener('click',()=>location.href='/admin/reservations.html');
+async function logout(btn){if(btn.disabled)return;btn.disabled=true;btn.textContent='Sortie…';const {error}=await supabaseClient.auth.signOut();if(error){btn.disabled=false;btn.textContent='Sortir';showFeedback('Déconnexion impossible.',true)}}
+document.querySelector('#logout').addEventListener('click',e=>logout(e.currentTarget));document.querySelector('#navLogout').addEventListener('click',e=>logout(e.currentTarget));
+function showApp(session){document.querySelector('#userEmail').textContent=session?.user?.email||'';app.hidden=false;login.hidden=true;load()}
+function showLogin(){app.hidden=true;login.hidden=false}
+loginForm.addEventListener('submit',async e=>{e.preventDefault();loginFeedback.textContent='';const b=e.submitter||loginForm.querySelector('button');b.disabled=true;b.textContent='Connexion…';const {data,error}=await supabaseClient.auth.signInWithPassword({email:document.querySelector('#email').value.trim(),password:document.querySelector('#password').value});b.disabled=false;b.textContent='Entrer dans le service';if(error){loginFeedback.textContent='Connexion impossible. Vérifiez vos identifiants.';return}if(data?.session)showApp(data.session)});
+supabaseClient.auth.onAuthStateChange((_event,session)=>{if(session)showApp(session);else showLogin()});
+supabaseClient.auth.getSession().then(({data})=>data?.session?showApp(data.session):showLogin());
+})();
+</script>
+</body>
+</html>
