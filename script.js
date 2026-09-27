@@ -220,7 +220,8 @@ const openDishModal = (item, trigger) => {
   dishModalCategory.textContent = categoryLabels[category] || '';
   dishModalTitle.textContent = name;
   dishModalPrice.textContent = price;
-  dishModalDescription.textContent = description || 'Description à venir.';
+  dishModalDescription.textContent = description || '';
+  dishModalDescription.hidden = !description;
   dishModal.classList.add('open');
   dishModal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('dish-modal-open');
