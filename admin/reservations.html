@@ -49,7 +49,7 @@
 <div id="app" class="app" hidden>
 <header class="top">
   <a class="brand" href="/"><span class="mark">K</span><span>KAJAZOMA · RÉSERVATIONS</span></a>
-  <div class="top-actions"><span id="userEmail" class="user"></span><button id="logout" class="btn">Sortir</button></div>
+  <div class="top-actions"><span id="userEmail" class="user"></span><a class="btn" href="/admin/service.html" style="text-decoration:none">Service</a><button id="logout" class="btn">Sortir</button></div>
 </header>
 <main class="shell">
   <div class="heading">
@@ -67,7 +67,7 @@
 </main>
 </div>
 <nav class="bottom-nav" aria-label="Navigation">
-  <button class="nav-item active" type="button" id="navReservations"><span class="nav-icon">≡</span><span>Réservations</span></button>
+  <button class="nav-item active" type="button" id="navReservations"><span class="nav-icon">≡</span><span>Réservations</span></button><button class="nav-item" type="button" id="navService"><span class="nav-icon">⌂</span><span>Service</span></button>
   <button class="nav-item" type="button" id="navRefresh"><span class="nav-icon">↻</span><span>Actualiser</span></button>
   <button class="nav-item" type="button" id="navLogout"><span class="nav-icon">↪</span><span>Déconnexion</span></button>
 </nav>
@@ -183,7 +183,7 @@
   document.querySelector('#navRefresh').addEventListener('click',loadReservations);
   async function logoutWithBusy(btn){if(btn.disabled)return;btn.disabled=true;const label=btn.textContent;btn.textContent='Sortie…';const {error}=await supabaseClient.auth.signOut();if(error){btn.disabled=false;btn.textContent=label;showFeedback('Déconnexion impossible.',true)}}
   document.querySelector('#navLogout').addEventListener('click',()=>logoutWithBusy(document.querySelector('#navLogout')));
-  document.querySelector('#navReservations').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  document.querySelector('#navReservations').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));document.querySelector('#navService').addEventListener('click',()=>location.href='/admin/service.html');
   document.querySelector('#logout').addEventListener('click',()=>logoutWithBusy(document.querySelector('#logout')));
   function setGlobalNav(visible){document.querySelector(".bottom-nav").hidden=!visible}
   function showApp(session){
