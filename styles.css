@@ -628,3 +628,292 @@ body.dish-modal-open{overflow:hidden}
     color:#f4efe5;
   }
 }
+
+
+/* KAJAZOMA — DESIGN REFINEMENT V4
+   Premium editorial system: quieter UI, stronger typography, less "template" feel.
+*/
+:root{
+  --ink:#0b0f0c;
+  --ink-2:#121812;
+  --cream:#f4efe5;
+  --gold:#c9a35e;
+  --gold-soft:#e3c887;
+  --line:rgba(201,163,94,.20);
+  --line-light:rgba(11,15,12,.14);
+  --content:1180px;
+}
+body{
+  background:var(--ink);
+  color:#f5f1e8;
+  letter-spacing:-.006em;
+}
+::selection{background:var(--gold);color:var(--ink)}
+.header{
+  height:76px;
+  padding:0 5vw;
+  background:rgba(11,15,12,.88);
+  border-bottom:1px solid rgba(244,239,229,.09);
+  backdrop-filter:blur(18px);
+}
+.brand{font-size:21px;letter-spacing:.01em}
+.brand-mark{
+  width:30px;height:30px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  font-size:14px;
+}
+.nav{gap:28px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.nav a{position:relative;color:#d8d4ca}
+.nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s ease;
+}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
+.btn{
+  border-radius:2px;
+  padding:13px 20px;
+  font-size:11px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-soft);color:var(--ink)}
+.btn-outline{border-color:rgba(244,239,229,.38)}
+.hero{
+  min-height:100svh;
+  padding:150px 5vw 84px;
+}
+.hero-media{filter:saturate(.82) contrast(1.03)}
+.shade{
+  background:
+    linear-gradient(90deg,rgba(8,12,9,.90) 0%,rgba(8,12,9,.56) 46%,rgba(8,12,9,.16) 100%),
+    linear-gradient(0deg,rgba(8,12,9,.82) 0%,transparent 58%);
+}
+.hero-inner{max-width:820px}
+.hero .eyebrow{margin-bottom:20px}
+.hero h1{
+  font-size:clamp(58px,8.2vw,112px);
+  letter-spacing:-.055em;
+  max-width:900px;
+}
+.hero h1 em{color:#e1bd75}
+.hero p{max-width:560px;font-size:17px;line-height:1.75;color:#ddd9cf}
+.hero .actions{margin-top:34px}
+.hero-badge{
+  right:5vw;bottom:44px;
+  display:flex;gap:18px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  color:#d8d4ca;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.hero-badge span+span{position:relative}
+.hero-badge span+span::before{
+  content:"";position:absolute;left:-10px;top:50%;width:3px;height:3px;
+  border-radius:50%;background:var(--gold);transform:translateY(-50%);
+}
+.hero-scroll{
+  bottom:44px;left:5vw;
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:#bdb8ad;
+}
+.section{padding:120px 5vw}
+.section h2{letter-spacing:-.045em}
+.split,.section-head,.editorial-grid,.gallery,.contact-card{max-width:var(--content)}
+.cream{background:var(--cream)}
+.text-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.table-intro{padding-bottom:72px}
+.table-intro .muted{max-width:420px;line-height:1.8}
+.notice{
+  max-width:var(--content);
+  margin:0 auto 42px;
+  padding:0 0 16px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  color:#8f938a;
+  font-size:12px;
+}
+.notice a{color:var(--gold-soft)}
+#menu .section-head{max-width:var(--content)}
+#menu .tabs{max-width:var(--content)}
+#menu .menu-grid{max-width:var(--content)}
+.signature{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);
+  gap:0;
+  padding-left:0;padding-right:0;
+  background:#10150f;
+}
+.signature-media{
+  min-height:680px;
+  overflow:hidden;
+}
+.signature-media img{
+  width:100%;height:100%;display:block;object-fit:cover;
+  filter:saturate(.86);
+}
+.signature-copy{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:90px 7vw 90px 6vw;
+}
+.signature-number{
+  margin:28px 0 12px;
+  color:var(--gold);
+  font:400 13px/1 Georgia,serif;
+}
+.signature-copy h2{font-size:clamp(48px,5.5vw,78px);margin-bottom:20px}
+.signature-copy p{max-width:420px;color:#a9ada4;line-height:1.8}
+.night-section{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(8,11,8,.94),rgba(8,11,8,.68)),
+    url('images/kajazoma-piscine-nuit.webp') center/cover;
+}
+.night-inner{max-width:760px}
+.night-section h2{font-size:clamp(52px,7vw,92px)}
+.night-section p{max-width:520px;color:#bbb7ad;line-height:1.8}
+.cocktail-line{
+  display:flex;flex-wrap:wrap;gap:14px;
+  margin:32px 0;
+  color:#e0dbcf;
+  font:400 16px Georgia,serif;
+}
+.cocktail-line i{color:var(--gold);font-style:normal}
+.feature{
+  min-height:640px;
+  padding-left:0;padding-right:0;
+}
+.feature-image{filter:saturate(.72)}
+.feature-copy{
+  max-width:580px;
+  margin-left:5vw;
+  padding:56px 0 56px 56px;
+  background:linear-gradient(90deg,rgba(11,15,12,.92),rgba(11,15,12,.68),transparent);
+  border:0;
+  backdrop-filter:none;
+}
+.feature-copy h2{font-size:clamp(44px,5.5vw,72px)}
+.gallery{
+  grid-template-columns:1.55fr .8fr .8fr;
+  grid-auto-rows:290px;
+  gap:8px;
+}
+.gallery button{
+  border-radius:0;
+  background:#171c17;
+}
+.gallery img{filter:saturate(.9)}
+.gallery button:hover img{transform:scale(1.025)}
+.manifesto{
+  padding-top:150px;padding-bottom:150px;
+}
+.manifesto-inner{max-width:920px;margin:auto;text-align:center}
+.manifesto blockquote{
+  margin:22px 0 34px;
+  font:400 clamp(36px,5vw,64px)/1.08 Georgia,serif;
+  letter-spacing:-.04em;
+}
+.manifesto-sign{
+  color:#7d715d;
+  font-size:10px;letter-spacing:.28em;
+}
+.hours-grid{gap:0 40px}
+.hours-grid div{padding:18px 0}
+.contact-card{gap:70px}
+.map-box{
+  min-height:340px;
+  border-radius:0;
+  background:
+    linear-gradient(rgba(11,15,12,.25),rgba(11,15,12,.72)),
+    url('images/kajazoma-entree.webp') center/cover;
+  align-items:flex-start;
+  justify-content:flex-end;
+  padding:28px;
+}
+.map-k{width:44px;height:44px;font-size:24px}
+.footer{
+  padding:58px 5vw;
+  border-top:1px solid rgba(244,239,229,.10);
+}
+.mobile-action-bar{
+  background:rgba(11,15,12,.96);
+  border-top:1px solid rgba(201,163,94,.25);
+  backdrop-filter:blur(16px);
+}
+@media(max-width:850px){
+  .header{height:68px;padding:0 5vw}
+  .nav{
+    top:68px;
+    background:rgba(11,15,12,.98);
+    border-top:1px solid rgba(244,239,229,.08);
+  }
+  .nav a{font-size:13px;padding:13px 0}
+  .hero{
+    min-height:88svh;
+    padding:126px 5vw 120px;
+  }
+  .hero h1{font-size:clamp(48px,13vw,70px)}
+  .hero p{font-size:15px;line-height:1.65}
+  .hero-badge{
+    left:5vw;right:auto;bottom:82px;
+    gap:16px;font-size:9px;
+  }
+  .hero-scroll{display:none}
+  .section{padding:82px 5vw}
+  .split{gap:38px}
+  .table-intro{padding-bottom:48px}
+  .notice{margin-bottom:30px}
+  .signature{
+    display:block;
+    padding:0;
+  }
+  .signature-media{min-height:430px}
+  .signature-copy{padding:64px 5vw 78px}
+  .signature-copy h2{font-size:clamp(44px,12vw,64px)}
+  .feature{min-height:560px}
+  .feature-copy{
+    margin:0 5vw;
+    padding:38px 0;
+    max-width:520px;
+    background:linear-gradient(90deg,rgba(11,15,12,.92),rgba(11,15,12,.42),transparent);
+  }
+  .gallery{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:210px;
+    gap:6px;
+  }
+  .gallery button:first-child{grid-row:span 2}
+  .manifesto{padding-top:100px;padding-bottom:100px}
+  .manifesto blockquote{font-size:clamp(34px,9vw,52px)}
+  .contact-card{gap:42px}
+  .map-box{min-height:280px}
+}
+@media(max-width:560px){
+  .hero{min-height:84svh}
+  .hero h1{letter-spacing:-.05em}
+  .hero-badge{bottom:78px}
+  .section{padding:72px 5vw}
+  .signature-media{min-height:360px}
+  .gallery{
+    grid-template-columns:1fr;
+    grid-auto-rows:260px;
+  }
+  .gallery button:first-child{grid-row:auto;min-height:360px}
+  .cocktail-line{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){
+  .nav a::after,.gallery img{transition:none}
+}
