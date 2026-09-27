@@ -131,12 +131,36 @@
   overlay.addEventListener('click',closeDrawer);document.querySelector('#closeDrawer').addEventListener('click',closeDrawer);
   [search,dateFilter,statusFilter].forEach(el=>el.addEventListener('input',render));document.querySelector('#refresh').addEventListener('click',loadReservations);
   document.querySelector('#logout').addEventListener('click',async()=>{await supabaseClient.auth.signOut();});
-  loginForm.addEventListener('submit',async e=>{e.preventDefault();loginFeedback.textContent='';const email=document.querySelector('#email').value.trim(),password=document.querySelector('#password').value;const {error}=await supabaseClient.auth.signInWithPassword({email,password});if(error)loginFeedback.textContent='Connexion impossible. Vérifiez vos identifiants.';});
-  supabaseClient.auth.onAuthStateChange(async(_event,session)=>{
-    if(!session){login.hidden=false;app.hidden=true;return;}
-    login.hidden=true;app.hidden=false;document.querySelector('#userEmail').textContent=session.user.email||'';await loadReservations();
+  function showApp(session){
+    login.hidden=true;
+    app.hidden=false;
+    document.querySelector('#userEmail').textContent=session?.user?.email||'';
+    window.setTimeout(loadReservations,0);
+  }
+  loginForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    loginFeedback.textContent='';
+    const submit=e.submitter||loginForm.querySelector('button');
+    submit.disabled=true;
+    submit.textContent='Connexion…';
+    const email=document.querySelector('#email').value.trim();
+    const password=document.querySelector('#password').value;
+    const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+    submit.disabled=false;
+    submit.textContent='Ouvrir la réception';
+    if(error){
+      loginFeedback.textContent='Connexion impossible. Vérifiez vos identifiants.';
+      return;
+    }
+    if(data?.session) showApp(data.session);
   });
-  supabaseClient.auth.getSession().then(({data})=>{if(data.session){login.hidden=true;app.hidden=false;document.querySelector('#userEmail').textContent=data.session.user.email||'';loadReservations();}});
+  supabaseClient.auth.onAuthStateChange((_event,session)=>{
+    if(!session){login.hidden=false;app.hidden=true;return;}
+    showApp(session);
+  });
+  supabaseClient.auth.getSession().then(({data})=>{
+    if(data?.session) showApp(data.session);
+  });
 })();
 </script>
 </body>
