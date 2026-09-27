@@ -104,7 +104,7 @@
     <div class="booking-intro">
       <span class="eyebrow dark">01 — Votre demande</span>
       <h2>Choisissez votre moment.</h2>
-      <p>Remplissez vos informations. Votre demande sera préparée dans WhatsApp afin que l'équipe Kajazoma puisse confirmer la disponibilité.</p>
+      <p>Remplissez vos informations. Votre demande est transmise à l’équipe Kajazoma, qui vérifie la disponibilité avant de vous confirmer la table.</p>
     </div>
     <form id="bookingForm" class="booking-card" novalidate autocomplete="on" aria-label="Formulaire de demande de réservation">
       <div class="progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span></div>
@@ -117,7 +117,7 @@
         <label>Occasion<select name="occasion"><option>Repas</option><option>Anniversaire</option><option>Dîner romantique</option><option>Déjeuner d'affaires</option><option>Événement / groupe</option></select></label>
         <label class="full">Message<textarea name="message" rows="5" placeholder="Préférence de table, allergie, demande particulière…"></textarea></label>
       </div>
-      <button class="btn btn-gold booking-submit" type="submit">Envoyer la demande sur WhatsApp <span>↗</span></button>
+      <button class="btn btn-gold booking-submit" type="submit">Envoyer la demande <span>↗</span></button>
       <p class="fine">Votre demande n'est pas une confirmation automatique. La table est confirmée après réponse du restaurant.</p>
     </form>
     <div class="booking-footnote"><span>KAJAZOMA</span><span>Restaurant · Galerie · Jardin</span></div>
@@ -210,7 +210,7 @@
     setLoading(true);
 
     try {
-      const { data: reservation, error } = await supabaseClient
+      const { error } = await supabaseClient
         .from('reservations')
         .insert({
           customer_name: name,
@@ -221,9 +221,7 @@
           message: combinedMessage || null,
           status: 'pending',
           source: 'website'
-        })
-        .select('id, status')
-        .single();
+        });
 
       if (error) throw error;
 
@@ -240,7 +238,7 @@
       submitButton.innerHTML = 'Demande envoyée <span>✓</span>';
       submitButton.disabled = true;
       submitButton.removeAttribute('aria-busy');
-      submitButton.dataset.reservationId = reservation.id;
+      
     } catch (error) {
       console.error('Kajazoma reservation error:', error);
       const isNetworkError = !navigator.onLine || error?.message?.toLowerCase().includes('fetch');
