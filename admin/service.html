@@ -79,7 +79,7 @@ function loadGreeting(){const h=new Date().getHours();document.querySelector('#g
 async function load(){
 hideFeedback();
 const {data,error}=await supabaseClient.from('reservations').select('id,created_at,updated_at,customer_name,phone,email,reservation_date,reservation_time,party_size,message,status,source,admin_note').eq('reservation_date',today()).order('reservation_time',{ascending:true});
-if(error){showFeedback('Impossible de charger le service. Vérifiez que le compte connecté possède bien le rôle administrateur.',true);return}
+if(error){showFeedback('Impossible de charger le service. Vérifiez que votre rôle autorise l’accès à cet espace.',true);return}
 reservations=data||[];render()
 }
 function render(){
@@ -136,7 +136,7 @@ document.querySelector('#quickWhatsApp').addEventListener('click',()=>{const r=f
 document.querySelector('#quickNote').addEventListener('click',()=>{const r=serviceReservations().find(x=>x.status==='arrived')||serviceReservations()[0];if(r)openReservation(r.id);else showFeedback('Aucune réservation à noter pour aujourd’hui.',true)});
 async function logout(btn){if(btn.disabled)return;btn.disabled=true;btn.textContent='Sortie…';const {error}=await supabaseClient.auth.signOut();if(error){btn.disabled=false;btn.textContent='Sortir';showFeedback('Déconnexion impossible.',true)}}
 document.querySelector('#logout').addEventListener('click',e=>logout(e.currentTarget));document.querySelector('#navLogout').addEventListener('click',e=>logout(e.currentTarget));
-function showApp(session){document.querySelector('#userEmail').textContent=session?.user?.email||'';app.hidden=false;login.hidden=true;load()}
+async function showApp(session){const {data:roleData,error:roleError}=await supabaseClient.rpc('get_my_staff_role');if(roleError||!['service','direction'].includes(roleData)){await supabaseClient.auth.signOut();loginFeedback.textContent='Cet espace est réservé au Service et à la Direction.';return}document.querySelector('#userEmail').textContent=session?.user?.email||'';app.hidden=false;login.hidden=true;load()}
 function showLogin(){app.hidden=true;login.hidden=false}
 loginForm.addEventListener('submit',async e=>{e.preventDefault();loginFeedback.textContent='';const b=e.submitter||loginForm.querySelector('button');b.disabled=true;b.textContent='Connexion…';const {data,error}=await supabaseClient.auth.signInWithPassword({email:document.querySelector('#email').value.trim(),password:document.querySelector('#password').value});b.disabled=false;b.textContent='Entrer dans le service';if(error){loginFeedback.textContent='Connexion impossible. Vérifiez vos identifiants.';return}if(data?.session)showApp(data.session)});
 supabaseClient.auth.onAuthStateChange((_event,session)=>{if(session)showApp(session);else showLogin()});
