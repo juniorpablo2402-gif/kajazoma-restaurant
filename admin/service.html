@@ -26,7 +26,7 @@
 @media(min-width:700px){.login{grid-template-columns:minmax(360px,42%) 1fr;grid-template-rows:1fr}.private-rail{min-height:100svh;padding:52px 56px}.private-copy p{display:block;max-width:360px;color:#aeb7ae;font-size:12px;line-height:1.8}.shell{padding-top:34px}.private-copy h1{font-size:58px}.login-card{padding:52px 64px;max-width:620px}.quick{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:760px){.heading{display:block}.service-meta{text-align:left;margin-top:9px}.hero-grid{grid-template-columns:1fr 1fr}.hero-copy{grid-column:1/-1}.grid{grid-template-columns:1fr}.row{grid-template-columns:54px minmax(0,1fr) auto}.row .pill{display:none}.row-actions{display:none}}
 @media(max-width:420px){.shell{padding-left:12px;padding-right:12px}.top{padding:0 13px}.user{display:none}.hero{padding:13px}.hero-grid{grid-template-columns:1fr 1fr}.hero-copy{grid-column:1/-1}.hero h2{font-size:27px}.metric{min-height:68px;padding:9px}.metric b{font-size:25px}.panel{padding:14px}.quick{grid-template-columns:repeat(2,1fr)}h1{font-size:39px}}
-</style>
+@media(max-width:760px){.shell{display:flex;flex-direction:column}.grid{display:contents}.stack{display:contents}#arrivalPanel{order:1}#servePanel{order:2}#priorityPanel{order:3}.quick{order:4}#notesPanel{order:5}.panel{width:100%}.arrival-panel-placeholder{display:none}}</style>
 </head>
 <body>
 <div id="login" class="login">
@@ -41,12 +41,12 @@
 <section class="hero"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">Que se passe-t-il en salle ?</span><h2>Le service est en mouvement.</h2><p id="heroSub">Chargement du service du jour…</p></div><div class="metric"><span class="icon">♜</span><b id="serveCount">0</b><span>À suivre aujourd’hui</span></div><div class="metric"><span class="icon">◉</span><b id="activeCount">0</b><span>En service</span></div><div class="metric"><span class="icon">◷</span><b id="upcomingCount">0</b><span>Arrivées prochaines</span></div></div></section>
 <div class="grid">
 <div class="stack">
-<section class="panel"><div class="panel-head"><h2>À suivre aujourd’hui <span class="count" id="serveBadge">0</span></h2><button class="link" id="showAllTables">Voir toutes →</button></div><div id="serveList"></div></section>
-<section class="panel"><div class="panel-head"><h2>Arrivées prochaines <span class="count" id="arrivalBadge">0</span></h2><button class="link" id="showAllArrivals">Voir toutes →</button></div><div id="arrivalList"></div></section>
+<section id="servePanel" class="panel"><div class="panel-head"><h2>À suivre maintenant <span class="count" id="serveBadge">0</span></h2><button class="link" id="showAllTables">Voir toutes →</button></div><div id="serveList"></div></section>
+<section id="arrivalPanel" class="panel"><div class="panel-head"><h2>Prochaine arrivée <span class="count" id="arrivalBadge">0</span></h2><button class="link" id="showAllArrivals">Voir toutes →</button></div><div id="arrivalList"></div></section>
 </div>
 <div class="stack">
-<section class="panel"><div class="panel-head"><h2>Actions prioritaires <span class="count" id="priorityBadge">0</span></h2></div><div id="priorityList"></div></section>
-<section class="panel"><div class="panel-head"><h2>Notes de salle</h2><button class="link" id="showNotes">Voir toutes →</button></div><div id="notesList"></div></section>
+<section id="priorityPanel" class="panel"><div class="panel-head"><h2>Actions prioritaires <span class="count" id="priorityBadge">0</span></h2></div><div id="priorityList"></div></section>
+<section id="notesPanel" class="panel"><div class="panel-head"><h2>Notes de salle</h2><button class="link" id="showNotes">Voir toutes →</button></div><div id="notesList"></div></section>
 </div>
 </div>
 <section class="quick"><button id="quickCall"><span>⌕</span>Appeler</button><button id="quickWhatsApp"><span>◌</span>WhatsApp</button><button id="quickTable"><span>◉</span>Vue du jour</button><button id="quickNote"><span>✎</span>Ajouter une note</button><button id="quickReservations"><span>≡</span>Réservations</button></section>
@@ -105,7 +105,7 @@ function row(r,actionLabel='Voir'){
 return '<div class="row" data-id="'+esc(r.id)+'"><div class="time-badge">'+formatTime(r.reservation_time)+'</div><div class="row-main"><strong>'+esc(r.customer_name)+'</strong><span>'+esc(r.party_size)+(r.party_size===1?' personne':' personnes')+'</span></div><span class="pill '+esc(r.status)+'">'+esc(statusLabel[r.status]||r.status)+'</span><div class="row-actions"><button class="mini" data-open="'+esc(r.id)+'" aria-label="'+actionLabel+'">›</button></div></div>'
 }
 function renderTables(rows){const el=document.querySelector('#serveList');el.innerHTML=rows.length?rows.map(r=>row(r)).join(''):'<div class="empty">Aucune table à suivre pour le moment.</div>';bindOpen(el)}
-function renderArrivals(rows){const el=document.querySelector('#arrivalList');el.innerHTML=rows.length?rows.slice(0,8).map(r=>row(r,'Ouvrir')).join(''):'<div class="empty">Aucune arrivée prochaine.</div>';bindOpen(el)}
+function renderArrivals(rows){const el=document.querySelector('#arrivalList');const next=rows.slice().sort((a,b)=>timeMinutes(a.reservation_time)-timeMinutes(b.reservation_time))[0];el.innerHTML=next?row(next,'Ouvrir'):'<div class="empty">Aucune arrivée prochaine.</div>';bindOpen(el)}
 function bindOpen(el){el.querySelectorAll('[data-id],[data-open]').forEach(node=>node.addEventListener('click',e=>{const id=node.dataset.id||node.dataset.open;openReservation(id)}))}
 function renderPriorities(pending,upcoming,active){
 const items=[];
