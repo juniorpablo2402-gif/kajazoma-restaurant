@@ -36,13 +36,12 @@
 <div id="app" class="app" hidden>
 <header class="top"><a class="brand" href="/admin/reservations.html"><span class="mark">K</span><span>KAJAZOMA · SERVICE</span></a><div class="top-actions"><span id="userEmail" class="user"></span><button id="refresh" class="btn">Actualiser</button><button id="logout" class="btn">Sortir</button></div></header>
 <main class="shell">
-<div class="heading"><div><span class="eyebrow">Service du jour</span><h1 id="greeting">Bonsoir.</h1><p class="sub">Voici ce qui se passe en salle et ce qui mérite votre attention maintenant.</p></div><div class="service-meta"><strong id="todayLabel">—</strong><span>Service du soir · vue temps réel</span></div></div>
+<div class="heading"><div><span class="eyebrow">Service du jour</span><h1 id="greeting">Bonsoir.</h1><p class="sub">Voici les réservations du jour, les prochaines arrivées et les priorités du service.</p></div><div class="service-meta"><strong id="todayLabel">—</strong><span>Service · vue temps réel</span></div></div>
 <div id="feedback" class="feedback" hidden></div>
-<section class="hero"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">Que se passe-t-il en salle ?</span><h2>Le service est en mouvement.</h2><p id="heroSub">Chargement des tables du jour…</p></div><div class="metric"><span class="icon">♜</span><b id="serveCount">0</b><span>Tables à servir</span></div><div class="metric"><span class="icon">◉</span><b id="activeCount">0</b><span>En service</span></div><div class="metric"><span class="icon">◷</span><b id="upcomingCount">0</b><span>Arrivées prochaines</span></div></div></section>
-<section class="panel floor-panel"><div class="panel-head"><div><span class="eyebrow">Plan de salle</span><h2>Les tables</h2></div><div class="floor-legend"><span><i class="dot libre"></i>Libre</span><span><i class="dot reservee"></i>Réservée</span><span><i class="dot arrivee"></i>Arrivée</span><span><i class="dot en_service"></i>Service</span><span><i class="dot a_liberer"></i>À libérer</span></div></div><div id="floorPlan" class="floor-plan"></div><div id="floorEmpty" class="floor-empty" hidden>Aucune table n’est encore configurée dans Supabase.</div></section>
+<section class="hero"><div class="hero-grid"><div class="hero-copy"><span class="eyebrow">Que se passe-t-il en salle ?</span><h2>Le service est en mouvement.</h2><p id="heroSub">Chargement du service du jour…</p></div><div class="metric"><span class="icon">♜</span><b id="serveCount">0</b><span>À suivre aujourd’hui</span></div><div class="metric"><span class="icon">◉</span><b id="activeCount">0</b><span>En service</span></div><div class="metric"><span class="icon">◷</span><b id="upcomingCount">0</b><span>Arrivées prochaines</span></div></div></section>
 <div class="grid">
 <div class="stack">
-<section class="panel"><div class="panel-head"><h2>Tables à servir <span class="count" id="serveBadge">0</span></h2><button class="link" id="showAllTables">Voir toutes →</button></div><div id="serveList"></div></section>
+<section class="panel"><div class="panel-head"><h2>À suivre aujourd’hui <span class="count" id="serveBadge">0</span></h2><button class="link" id="showAllTables">Voir toutes →</button></div><div id="serveList"></div></section>
 <section class="panel"><div class="panel-head"><h2>Arrivées prochaines <span class="count" id="arrivalBadge">0</span></h2><button class="link" id="showAllArrivals">Voir toutes →</button></div><div id="arrivalList"></div></section>
 </div>
 <div class="stack">
@@ -50,10 +49,10 @@
 <section class="panel"><div class="panel-head"><h2>Notes de salle</h2><button class="link" id="showNotes">Voir toutes →</button></div><div id="notesList"></div></section>
 </div>
 </div>
-<section class="quick"><button id="quickCall"><span>⌕</span>Appeler</button><button id="quickWhatsApp"><span>◌</span>WhatsApp</button><button id="quickTable"><span>♜</span>Voir une table</button><button id="quickNote"><span>✎</span>Ajouter une note</button><button id="quickReservations"><span>≡</span>Réservations</button></section>
+<section class="quick"><button id="quickCall"><span>⌕</span>Appeler</button><button id="quickWhatsApp"><span>◌</span>WhatsApp</button><button id="quickTable"><span>◉</span>Vue du jour</button><button id="quickNote"><span>✎</span>Ajouter une note</button><button id="quickReservations"><span>≡</span>Réservations</button></section>
 </main>
 </div>
-<nav class="bottom-nav" aria-label="Navigation équipe"><button class="nav-item active" id="navService"><span class="nav-icon">⌂</span><span>Accueil</span></button><button class="nav-item" id="navDirection" hidden><span class="nav-icon">◇</span><span>Direction</span></button><button class="nav-item" id="navTables"><span class="nav-icon">♜</span><span>Tables</span></button><button class="nav-item" id="navReservations"><span class="nav-icon">≡</span><span>Réservations</span></button><button class="nav-item" id="navLogout"><span class="nav-icon">↪</span><span>Sortir</span></button></nav>
+<nav class="bottom-nav" aria-label="Navigation équipe"><button class="nav-item active" id="navService"><span class="nav-icon">⌂</span><span>Accueil</span></button><button class="nav-item" id="navDirection" hidden><span class="nav-icon">◇</span><span>Direction</span></button><button class="nav-item" id="navTables"><span class="nav-icon">◉</span><span>À suivre</span></button><button class="nav-item" id="navReservations"><span class="nav-icon">≡</span><span>Réservations</span></button><button class="nav-item" id="navLogout"><span class="nav-icon">↪</span><span>Sortir</span></button></nav>
 <div id="drawerOverlay" class="drawer-overlay"></div>
 <aside id="drawer" class="drawer"><div class="drawer-head"><div><span class="eyebrow">Table & réservation</span><h2 id="drawerTitle">—</h2></div><button id="closeDrawer" class="close">×</button></div><div class="drawer-body" id="drawerBody"></div></aside>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -90,7 +89,7 @@ reservations=res.data||[];tables=tbl.data||[];assignments=asg.data||[];render()
 function render(){
 loadGreeting();
 const todayRows=serviceReservations();
-const serving=todayRows.filter(r=>['confirmed','arrived'].includes(r.status));
+const serving=todayRows.filter(r=>['pending','confirmed','arrived'].includes(r.status));
 const active=todayRows.filter(r=>r.status==='arrived');
 const upcoming=todayRows.filter(r=>r.status==='confirmed'&&isFuture(r));
 const pending=todayRows.filter(r=>r.status==='pending');
@@ -99,55 +98,11 @@ document.querySelector('#activeCount').textContent=active.length;
 document.querySelector('#upcomingCount').textContent=upcoming.length;
 document.querySelector('#serveBadge').textContent=serving.length;
 document.querySelector('#arrivalBadge').textContent=upcoming.length;
-document.querySelector('#heroSub').textContent=todayRows.length?todayRows.length+' réservation'+(todayRows.length>1?'s':'')+' aujourd’hui · '+serving.length+' table'+(serving.length>1?'s':'')+' à suivre maintenant.':'Aucune réservation prévue aujourd’hui.';
-renderFloor();renderTables(serving);renderArrivals(upcoming);renderPriorities(pending,upcoming,active);renderNotes(todayRows)
-}
-function tableAssignment(tableId){return assignments.find(a=>a.table_id===tableId)||null}
-function reservationForTable(tableId){const a=tableAssignment(tableId);return a?reservations.find(r=>r.id===a.reservation_id):null}
-function renderFloor(){
-  const el=document.querySelector('#floorPlan'), empty=document.querySelector('#floorEmpty');
-  if(!tables.length){el.innerHTML='';empty.hidden=false;return}
-  empty.hidden=true;
-  const cols=3, rows=Math.max(3,Math.ceil(tables.length/cols));
-  el.style.minHeight=Math.max(330,rows*105)+'px';
-  el.innerHTML=tables.map((t,i)=>{
-    const r=reservationForTable(t.id);
-    const x=t.position_x==null?((i%cols)+.5)*100/cols:t.position_x;
-    const y=t.position_y==null:(Math.floor(i/cols)+.5)*100/rows;
-    const label=t.status==='libre'?'Libre':t.status==='reservee'?'Réservée':t.status==='arrivee'?'Arrivée':t.status==='en_service'?'Service':'À libérer';
-    return '<button class="floor-table '+esc(t.status)+'" style="left:'+x+'%;top:'+y+'%" data-table="'+esc(t.id)+'" aria-label="Table '+esc(t.table_number)+' · '+label+'"><strong>'+esc(t.table_number)+'</strong><span>'+esc(t.capacity)+' pl. · '+label+'</span></button>'
-  }).join('');
-  el.querySelectorAll('[data-table]').forEach(b=>b.addEventListener('click',()=>openTable(b.dataset.table)));
-}
-function openTable(id){
-  const t=tables.find(x=>x.id===id);if(!t)return;currentTable=t;
-  const r=reservationForTable(id);
-  const available= t.status==='libre';
-  const canStart=t.status==='arrivee';
-  const canFinish=t.status==='en_service';
-  const canRelease=t.status==='a_liberer';
-  document.querySelector('#drawerTitle').textContent=t.table_number;
-  drawerBody.innerHTML='<div class="detail-label">État</div><div class="detail-value"><span class="pill '+esc(t.status)+'">'+esc(t.status==='libre'?'Libre':t.status==='reservee'?'Réservée':t.status==='arrivee'?'Arrivée':t.status==='en_service'?'En service':'À libérer')+'</span></div><div class="detail-label">Capacité</div><div class="detail-value">'+esc(t.capacity)+' personnes · '+esc(t.zone)+'</div>'+(r?'<div class="detail-label">Réservation</div><div class="detail-value"><strong>'+esc(r.customer_name)+'</strong><br>'+formatTime(r.reservation_time)+' · '+esc(r.party_size)+' personne'+(r.party_size>1?'s':'')+'</div>':'<div class="detail-label">Réservation</div><div class="detail-value">Aucune</div>')+'<div class="table-actions">'+(available?'<button class="primary" id="assignTable">Attribuer</button>':'')+(r?'<button id="openReservationFromTable">Voir réservation</button>':'')+(canStart?'<button class="primary" id="startService">Démarrer le service</button>':'')+(canFinish?'<button class="primary" id="finishService">Fin de service</button>':'')+(canRelease?'<button class="primary" id="releaseTable">Libérer la table</button>':'')+(r&&(t.status==='reservee'||t.status==='arrivee')?'<button id="changeTable">Changer de table</button>':'')+'</div>';
-  drawer.classList.add('open');overlay.classList.add('open');
-  drawerBody.querySelector('#assignTable')?.addEventListener('click',()=>showAssignmentChoices(t.id));
-  drawerBody.querySelector('#changeTable')?.addEventListener('click',()=>showAssignmentChoices(t.id,r?.id));
-  drawerBody.querySelector('#openReservationFromTable')?.addEventListener('click',()=>openReservation(r.id));
-  drawerBody.querySelector('#startService')?.addEventListener('click',()=>tableRpc('start_table_service',{p_table_id:t.id}));
-  drawerBody.querySelector('#finishService')?.addEventListener('click',()=>tableRpc('finish_table_service',{p_table_id:t.id}));
-  drawerBody.querySelector('#releaseTable')?.addEventListener('click',()=>tableRpc('mark_table_ready',{p_table_id:t.id}));
-}
-function showAssignmentChoices(tableId,reservationId=null){
-  const candidates=serviceReservations().filter(r=>['pending','confirmed','arrived'].includes(r.status)).filter(r=>!assignments.some(a=>a.reservation_id===r.id));
-  drawerBody.innerHTML='<div class="detail-label">'+(reservationId?'Changer la table':'Attribuer la table')+'</div><div class="detail-value">Choisissez une réservation compatible avec la capacité de la table.</div><div class="assignment-list">'+(candidates.length?candidates.map(r=>'<button class="assignment-option" data-res="'+esc(r.id)+'"><strong>'+esc(r.customer_name)+' · '+formatTime(r.reservation_time)+'</strong><span>'+esc(r.party_size)+' pers. · '+esc(r.status==='arrived'?'Arrivée':'Confirmée')+'</span></button>').join(''):'<div class="floor-empty">Aucune réservation disponible pour cette table.</div>')+'</div><div class="table-actions"><button id="backTable">Retour</button></div>';
-  drawerBody.querySelector('#backTable')?.addEventListener('click',()=>openTable(tableId));
-  drawerBody.querySelectorAll('[data-res]').forEach(b=>b.addEventListener('click',async()=>{b.disabled=true;const fn=reservationId?'change_reservation_table':'assign_reservation_table';const args=reservationId?{p_reservation_id:reservationId,p_new_table_id:tableId,p_reason:'Changement depuis le plan de salle'}:{p_reservation_id:b.dataset.res,p_table_id:tableId};const {error}=await supabaseClient.rpc(fn,args);if(error){b.disabled=false;showFeedback(error.message||'Attribution impossible.',true);return}closeDrawer();await load()}));
-}
-async function tableRpc(fn,args){
-  const {error}=await supabaseClient.rpc(fn,args);if(error){showFeedback(error.message||'Action impossible.',true);return}
-  closeDrawer();await load();
+document.querySelector('#heroSub').textContent=todayRows.length?todayRows.length+' réservation'+(todayRows.length>1?'s':'')+' aujourd’hui · '+serving.length+' à suivre maintenant.':'Aucune réservation prévue aujourd’hui.';
+renderTables(serving);renderArrivals(upcoming);renderPriorities(pending,upcoming,active);renderNotes(todayRows)
 }
 function row(r,actionLabel='Voir'){
-return '<div class="row" data-id="'+esc(r.id)+'"><div class="table-badge">T'+(Math.min(99,Math.max(1,Number(r.party_size)||1)) )+'</div><div class="row-main"><strong>'+esc(r.customer_name)+'</strong><span>'+esc(r.party_size)+(r.party_size===1?' personne':' personnes')+'</span></div><span class="row-time">'+formatTime(r.reservation_time)+'</span><span class="pill '+esc(r.status)+'">'+esc(statusLabel[r.status]||r.status)+'</span><div class="row-actions"><button class="mini" data-open="'+esc(r.id)+'" aria-label="'+actionLabel+'">›</button></div></div>'
+return '<div class="row" data-id="'+esc(r.id)+'"><div class="table-badge">K</div><div class="row-main"><strong>'+esc(r.customer_name)+'</strong><span>'+esc(r.party_size)+(r.party_size===1?' personne':' personnes')+'</span></div><span class="row-time">'+formatTime(r.reservation_time)+'</span><span class="pill '+esc(r.status)+'">'+esc(statusLabel[r.status]||r.status)+'</span><div class="row-actions"><button class="mini" data-open="'+esc(r.id)+'" aria-label="'+actionLabel+'">›</button></div></div>'
 }
 function renderTables(rows){const el=document.querySelector('#serveList');el.innerHTML=rows.length?rows.map(r=>row(r)).join(''):'<div class="empty">Aucune table à suivre pour le moment.</div>';bindOpen(el)}
 function renderArrivals(rows){const el=document.querySelector('#arrivalList');el.innerHTML=rows.length?rows.slice(0,8).map(r=>row(r,'Ouvrir')).join(''):'<div class="empty">Aucune arrivée prochaine.</div>';bindOpen(el)}
@@ -182,7 +137,7 @@ document.querySelector('#quickReservations').addEventListener('click',()=>locati
 document.querySelector('#quickTable').addEventListener('click',()=>document.querySelector('#serveList').scrollIntoView({behavior:'smooth',block:'start'}));
 document.querySelector('#quickCall').addEventListener('click',()=>{const r=firstUpcoming();if(r)location.href='tel:'+r.phone;else showFeedback('Aucune réservation avec un numéro disponible.',true)});
 document.querySelector('#quickWhatsApp').addEventListener('click',()=>{const r=firstUpcoming();if(r){const phone=String(r.phone||'').replace(/\\D/g,'');location.href='https://wa.me/'+phone}else showFeedback('Aucune réservation disponible pour WhatsApp.',true)});
-document.querySelector('#quickNote').addEventListener('click',()=>{const r=serviceReservations().find(x=>x.status==='arrived')||serviceReservations()[0];if(r)openReservation(r.id);else showFeedback('Aucune réservation à noter pour aujourd’hui.',true)});
+document.querySelector('#quickNote').addEventListener('click',async()=>{const r=serviceReservations().find(x=>x.status==='arrived')||serviceReservations().find(x=>x.status==='confirmed')||serviceReservations()[0];if(!r){showFeedback('Aucune réservation à noter pour aujourd’hui.',true);return}const note=window.prompt('Note de salle pour '+r.customer_name,r.admin_note||'');if(note===null)return;const {error}=await supabaseClient.from('reservations').update({admin_note:note.trim()||null}).eq('id',r.id);if(error){showFeedback(error.message||'Impossible d’enregistrer la note.',true);return}showFeedback('Note enregistrée.');await load()});
 async function logout(btn){if(btn.disabled)return;btn.disabled=true;btn.textContent='Sortie…';const {error}=await supabaseClient.auth.signOut();if(error){btn.disabled=false;btn.textContent='Sortir';showFeedback('Déconnexion impossible.',true)}}
 document.querySelector('#logout').addEventListener('click',e=>logout(e.currentTarget));document.querySelector('#navLogout').addEventListener('click',e=>logout(e.currentTarget));
 async function showApp(session){const {data:roleData,error:roleError}=await supabaseClient.rpc('get_my_staff_role');if(roleError||!['service','direction'].includes(roleData)){await supabaseClient.auth.signOut();loginFeedback.textContent='Cet espace est réservé au Service et à la Direction.';return}document.querySelector('#userEmail').textContent=session?.user?.email||'';document.querySelector('#navDirection').hidden=roleData!=='direction';app.hidden=false;login.hidden=true;load()}
