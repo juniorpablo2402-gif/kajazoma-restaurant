@@ -190,17 +190,87 @@ const groups = {
 
 const menuGrid = document.querySelector('#menuGrid');
 
+const dishModal = document.createElement('div');
+dishModal.className = 'dish-modal';
+dishModal.setAttribute('aria-hidden', 'true');
+dishModal.innerHTML = `
+  <div class="dish-modal-backdrop" data-dish-close></div>
+  <section class="dish-modal-panel" role="dialog" aria-modal="true" aria-labelledby="dishModalTitle">
+    <button type="button" class="dish-modal-close" aria-label="Fermer le détail du plat" data-dish-close>×</button>
+    <div class="dish-modal-content">
+      <span class="dish-modal-category" id="dishModalCategory"></span>
+      <h2 id="dishModalTitle"></h2>
+      <strong class="dish-modal-price" id="dishModalPrice"></strong>
+      <p class="dish-modal-description" id="dishModalDescription"></p>
+      <a class="btn btn-gold dish-modal-reserve" href="reservation.html">Réserver</a>
+    </div>
+  </section>
+`;
+document.body.appendChild(dishModal);
+
+const dishModalCategory = dishModal.querySelector('#dishModalCategory');
+const dishModalTitle = dishModal.querySelector('#dishModalTitle');
+const dishModalPrice = dishModal.querySelector('#dishModalPrice');
+const dishModalDescription = dishModal.querySelector('#dishModalDescription');
+let lastDishTrigger = null;
+
+const openDishModal = (item, trigger) => {
+  const [name, category, price, description] = item;
+  lastDishTrigger = trigger || null;
+  dishModalCategory.textContent = categoryLabels[category] || '';
+  dishModalTitle.textContent = name;
+  dishModalPrice.textContent = price;
+  dishModalDescription.textContent = description || 'Description à venir.';
+  dishModal.classList.add('open');
+  dishModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('dish-modal-open');
+  dishModal.querySelector('.dish-modal-close').focus();
+};
+
+const closeDishModal = () => {
+  dishModal.classList.remove('open');
+  dishModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('dish-modal-open');
+  lastDishTrigger?.focus();
+};
+
+const bindDishCards = () => {
+  menuGrid.querySelectorAll('.menu-card').forEach(card => {
+    const item = menu[Number(card.dataset.menuIndex)];
+    const open = () => openDishModal(item, card);
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+};
+
 function renderMenu(group='all') {
   const visible = menu.filter(item => group === 'all' || (groups[group] || []).includes(item[1]));
-  menuGrid.innerHTML = visible.map(([name,cat,price,description]) => `
-    <article class="menu-card">
-      <span class="tag">${categoryLabels[cat]}</span>
-      <h3>${name}</h3>
-      ${description ? `<p>${description}</p>` : ''}
-      <div class="menu-meta"><span></span><strong class="price">${price}</strong></div>
-    </article>
-  `).join('');
+  menuGrid.innerHTML = visible.map(item => {
+    const [name,cat,price,description] = item;
+    return `
+      <article class="menu-card" tabindex="0" role="button" aria-label="Voir le détail de ${name}" data-menu-index="${menu.indexOf(item)}">
+        <span class="tag">${categoryLabels[cat]}</span>
+        <h3>${name}</h3>
+        ${description ? `<p>${description}</p>` : ''}
+        <div class="menu-meta"><span class="menu-detail-hint">Voir le détail →</span><strong class="price">${price}</strong></div>
+      </article>
+    `;
+  }).join('');
+  bindDishCards();
 }
+
+dishModal.addEventListener('click', event => {
+  if (event.target.closest('[data-dish-close]')) closeDishModal();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && dishModal.classList.contains('open')) closeDishModal();
+});
 
 renderMenu();
 
